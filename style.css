@@ -1698,6 +1698,15 @@ input:checked + .switch.mini .slider:before {
     text-decoration: underline;
 }
 
+.footer-version {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    opacity: 0.55;
+    font-family: var(--font-sans);
+    letter-spacing: 0.5px;
+}
+
+
 
 .tech-badge {
     padding: 4px 10px;
