@@ -648,21 +648,6 @@ function initShowcaseWidget() {
    10. İndirme Butonları Kontrolü
    ========================================================================== */
 function initDownloadButtons() {
-    const winBtn = document.getElementById("btn-dl-win");
-    const macBtn = document.getElementById("btn-dl-mac");
-
-    const showDownloadAlert = (e, osName) => {
-        const msg = currentLang === "tr"
-            ? `Prepress Core ${osName} İstemci kurulum paketi (ZIP) indiriliyor... Lütfen matbaa yöneticinizden aldığınız lisans anahtarını hazırlayın.`
-            : `Downloading Prepress Core ${osName} Client installation package (ZIP)... Please prepare the license key obtained from your studio administrator.`;
-        alert(msg);
-    };
-
-    if (winBtn) {
-        winBtn.addEventListener("click", (e) => showDownloadAlert(e, "Windows"));
-    }
-    if (macBtn) {
-        macBtn.addEventListener("click", (e) => showDownloadAlert(e, "macOS"));
-    }
+    // HTML'deki <a> etiketleri (href ve download özellikleri ile) indirmeyi doğrudan başlatacaktır.
 }
 
