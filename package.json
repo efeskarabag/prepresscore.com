@@ -1,0 +1,23 @@
+{
+  "name": "prepress-core-website",
+  "version": "1.0.0",
+  "description": "Prepress Core Modern Tanıtım Web Sitesi",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "prepress",
+    "illustrator",
+    "cep",
+    "automation",
+    "netlify"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

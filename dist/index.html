@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepress Core | Adobe Illustrator Otomasyon Platformu</title>
+    <meta name="description" content="Adobe Illustrator için merkezi modül dağıtımı, HWID lisanslama, 24 saat çevrimdışı toleransı ve sessiz kurulum desteği sunan endüstriyel standartta prepress otomasyon sistemi.">
+    
+    <!-- Favicon (Inline SVG for clean, zero-request loading) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='6' stroke='%230ea5e9' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='16' cy='16' r='6' stroke='%230ea5e9' stroke-width='2.5' fill='none'/%3E%3Cline x1='16' y1='2' x2='16' y2='10' stroke='%230ea5e9' stroke-width='2'/%3E%3Cline x1='16' y1='22' x2='16' y2='30' stroke='%230ea5e9' stroke-width='2'/%3E%3Cline x1='2' y1='16' x2='10' y2='16' stroke='%230ea5e9' stroke-width='2'/%3E%3Cline x1='22' y1='16' x2='30' y2='16' stroke='%230ea5e9' stroke-width='2'/%3E%3C/svg%3E">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Vanilla CSS Link -->
+  <script type="module" crossorigin src="/assets/main-BFy37ilD.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-mFB58b6J.css">
+</head>
+<body>
+
+    <!-- Header / Navigasyon -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="header-logo">
+                <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="28" height="28" rx="6" stroke="url(#logo-grad)" stroke-width="2.5" />
+                    <circle cx="16" cy="16" r="6" stroke="url(#logo-grad)" stroke-width="2.5" />
+                    <line x1="16" y1="2" x2="16" y2="10" stroke="url(#logo-grad)" stroke-width="2" />
+                    <line x1="16" y1="22" x2="16" y2="30" stroke="url(#logo-grad)" stroke-width="2" />
+                    <line x1="2" y1="16" x2="10" y2="16" stroke="url(#logo-grad)" stroke-width="2" />
+                    <line x1="22" y1="16" x2="30" y2="16" stroke="url(#logo-grad)" stroke-width="2" />
+                    <defs>
+                        <linearGradient id="logo-grad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#0ea5e9" />
+                            <stop offset="1" stop-color="#8b5cf6" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">Prepress <span class="highlight">Core</span></span>
+            </a>
+
+            <nav class="main-nav" id="main-nav-menu">
+                <ul>
+                    <li><a href="#features" class="nav-link" data-i18n="nav-features">Özellikler</a></li>
+                    <li><a href="sandbox.html" target="_blank" class="nav-link nav-sandbox-bold" data-i18n="nav-sandbox-header">Canlı Simülatör ↗</a></li>
+                    <li><a href="#architecture" class="nav-link" data-i18n="nav-architecture">Mimari</a></li>
+                    <li><a href="#pricing" class="nav-link" data-i18n="nav-pricing">Fiyatlandırma</a></li>
+                    <li><a href="#downloads" class="btn btn-secondary nav-btn" data-i18n="nav-downloads">İndir</a></li>
+                    <li><button id="lang-switch-btn" class="lang-switch">EN</button></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Menüyü Aç/Kapat">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-glow"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge" data-i18n="hero-badge">Sürüm v1.2.0 Aktif</div>
+                    <h1 class="hero-title" id="hero-main-title" data-i18n="hero-title">Illustrator İş Akışınızı <br><span class="gradient-text">Profesyonel Olarak Otomatize Edin</span></h1>
+                    <p class="hero-subtitle" data-i18n="hero-subtitle">
+                        Prepress Core tarafından hazırlanan otomasyon modüllerine Illustrator içinden anında erişin. Güvenli HWID donanım kilidi ve 24 saat çevrimdışı çalışma desteğiyle kesintisiz baskı öncesi hazırlığı yapın.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#downloads" class="btn btn-primary" id="hero-btn-download">
+                            <span data-i18n="hero-btn-download">Hemen Başlayın</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                        </a>
+                        <a href="sandbox.html" target="_blank" class="btn btn-outline" id="hero-btn-demo">
+                            <span data-i18n="hero-btn-demo">Sistemi Deneyimleyin</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </a>
+                    </div>
+                    <div class="hero-meta">
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span data-i18n="hero-meta-encryption">AES-256 Şifreleme</span>
+                        </span>
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            <span data-i18n="hero-meta-cep">CEP Entegrasyonu</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Adobe Illustrator CEP Client Mockup -->
+                <div class="hero-mockup">
+                    <div class="mockup-frame">
+                        <div class="mockup-header">
+                            <div class="mockup-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="mockup-title" data-i18n="mockup-title">Adobe Illustrator - Prepress Panel v1.2</div>
+                            <div class="mockup-status-badge online" id="hero-mockup-status">
+                                <span class="dot"></span> <span data-i18n="mockup-status-online">ONLINE</span>
+                            </div>
+                        </div>
+                        <div class="mockup-body">
+                            <!-- CEP Extension UI -->
+                            <div class="cep-sidebar">
+                                <div class="cep-section-title" data-i18n="mockup-sec-modules">Modüller</div>
+                                <div class="cep-module-list">
+                                    <div class="cep-module-item">
+                                        <div class="cep-module-icon">K</div>
+                                        <div class="cep-module-info">
+                                            <div class="cep-module-name" data-i18n="mockup-mod-kros-name">Kros Ekle</div>
+                                            <div class="cep-module-desc" data-i18n="mockup-mod-kros-desc">Otomatik baskı krosları yerleştirir.</div>
+                                        </div>
+                                        <span class="cep-module-ver">v1.0.4</span>
+                                    </div>
+                                    <div class="cep-module-item">
+                                        <div class="cep-module-icon">R</div>
+                                        <div class="cep-module-info">
+                                            <div class="cep-module-name" data-i18n="mockup-mod-renk-name">Renk Analizi</div>
+                                            <div class="cep-module-desc" data-i18n="mockup-mod-renk-desc">Kanal ve mürekkep yoğunluğu kontrolü.</div>
+                                        </div>
+                                        <span class="cep-module-ver">v1.1.0</span>
+                                    </div>
+                                    <div class="cep-module-item" id="simulated-new-module" style="display: none;">
+                                        <div class="cep-module-icon new-pulse">G</div>
+                                        <div class="cep-module-info">
+                                            <div class="cep-module-name" data-i18n="mockup-mod-gorsel-name">Görsel Kontrol</div>
+                                            <div class="cep-module-desc" data-i18n="mockup-mod-gorsel-desc">Baskı öncesi çözünürlük denetimi.</div>
+                                        </div>
+                                        <span class="cep-module-ver">v1.0.0</span>
+                                    </div>
+                                </div>
+
+                                <div class="cep-section-title cep-spacer" data-i18n="mockup-sec-sys">Sistem Bilgisi</div>
+                                <div class="cep-sys-info">
+                                    <div class="cep-info-row">
+                                        <span data-i18n="mockup-sys-hwid">HWID Durumu:</span>
+                                        <span class="cep-text-success" data-i18n="mockup-sys-hwid-val">KİLİTLENDİ (OK)</span>
+                                    </div>
+                                    <div class="cep-info-row">
+                                        <span data-i18n="mockup-sys-license">Lisans Süresi:</span>
+                                        <span data-i18n="mockup-sys-license-val">Kalan 28 Gün</span>
+                                    </div>
+                                    <div class="cep-info-row">
+                                        <span data-i18n="mockup-sys-sync">Son Senkronizasyon:</span>
+                                        <span data-i18n="mockup-sys-sync-val">Şimdi</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mini Illustrator Artboard Mockup -->
+                            <div class="illustrator-canvas">
+                                <div class="canvas-grid"></div>
+                                <div class="canvas-artboard">
+                                    <div class="artboard-box">
+                                        <span class="crop-mark top-left"></span>
+                                        <span class="crop-mark top-right"></span>
+                                        <span class="crop-mark bottom-left"></span>
+                                        <span class="crop-mark bottom-right"></span>
+                                        <div class="design-preview">
+                                            <div class="design-shape circle"></div>
+                                            <div class="design-shape rect"></div>
+                                            <div class="design-label">Prepress Core - Illustrator Sandbox</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="features-title">Neden <span class="gradient-text">Prepress Core</span>?</h2>
+                    <p class="section-subtitle" data-i18n="features-subtitle">İş akışınızın verimliliğini artıran ve kod güvenliğini en üst düzeyde koruyan endüstriyel özellikler.</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card" id="feature-1">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#0ea5e9" />
+                                        <stop offset="1" stop-color="#22d3ee" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat1-title">Merkezi Script Dağıtımı</h3>
+                        <p class="feature-card-desc" data-i18n="feat1-desc">Sizin için geliştirdiğimiz veya güncellediğimiz tüm JSX/ZXP modülleri, herhangi bir dosya kopyalama işlemi olmadan anında Illustrator eklenti panelinizde aktif hale gelir.</p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card" id="feature-2">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-2" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#8b5cf6" />
+                                        <stop offset="1" stop-color="#d946ef" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat2-title">HWID Donanım Kilidi</h3>
+                        <p class="feature-card-desc" data-i18n="feat2-desc">Dağıtılan lisans anahtarı ilk çalıştırıldığında cihazın donanım kimliğiyle (HWID) eşleşir. Kodların lisanssız cihazlarda çalışmasını veya dışarı sızmasını engeller.</p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card" id="feature-3">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#f59e0b" />
+                                        <stop offset="1" stop-color="#ef4444" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat3-title">24 Saat Çevrimdışı Modu</h3>
+                        <p class="feature-card-desc" data-i18n="feat3-desc">İnternet kesintileri işinizi durduramaz. Prepress Core, son başarılı senkronizasyondan itibaren 24 saat boyunca şifreli yerel cache ile çalışmaya devam eder.</p>
+                    </div>
+
+                    <!-- Feature Card 4 -->
+                    <div class="feature-card" id="feature-4">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-4" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#10b981" />
+                                        <stop offset="1" stop-color="#34d399" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat4-title">Otomatik & Sessiz Güncellemeler</h3>
+                        <p class="feature-card-desc" data-i18n="feat4-desc">Arayüze yeni bir modül eklendiğinde kurulum dosyasını tekrar indirmenize gerek yoktur. Panel, yeni sürümleri API üzerinden otomatik denetler ve saniyeler içinde sessizce kurar.</p>
+                    </div>
+
+                    <!-- Feature Card 5 -->
+                    <div class="feature-card" id="feature-5">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2v20a10 10 0 0 0 0-20z"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-5" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#8b5cf6" />
+                                        <stop offset="1" stop-color="#0ea5e9" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat5-title">Dinamik Tema Uyumu</h3>
+                        <p class="feature-card-desc" data-i18n="feat5-desc">İstemci paneli, Adobe Illustrator'ın aktif renk ayarlarını (Dark, Light vb.) anlık algılar ve kendi arayüz temasını otomatik olarak senkronize eder.</p>
+                    </div>
+
+                    <!-- Feature Card 6 -->
+                    <div class="feature-card" id="feature-6">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-6" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#ec4899" />
+                                        <stop offset="1" stop-color="#8b5cf6" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat6-title">Gelişmiş Kişiselleştirme</h3>
+                        <p class="feature-card-desc" data-i18n="feat6-desc">Script modüllerini sürükleyip sıralayın, gruplayın ve çift tıklayarak kendi iş akışınıza göre isimlerini kolayca yeniden adlandırın.</p>
+                    </div>
+
+                    <!-- Feature Card 7 -->
+                    <div class="feature-card" id="feature-7">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-7" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#f59e0b" />
+                                        <stop offset="1" stop-color="#10b981" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat7-title">Kompakt Grid Arayüzü</h3>
+                        <p class="feature-card-desc" data-i18n="feat7-desc">Yoğun iş akışlarında ekran alanını korumak için tasarlanan ultra minimal boyutlardaki butonlar ve grid düzeniyle maksimum verimlilik sağlayın.</p>
+                    </div>
+
+                    <!-- Feature Card 8 -->
+                    <div class="feature-card" id="feature-8">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#feat-grad-8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <path d="M9 3v18"/>
+                                <path d="M3 9h18"/>
+                                <defs>
+                                    <linearGradient id="feat-grad-8" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#ef4444" />
+                                        <stop offset="1" stop-color="#f59e0b" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-title" data-i18n="feat8-title">Özel Arayüz Modalleri</h3>
+                        <p class="feature-card-desc" data-i18n="feat8-desc">Tarayıcıların yerel çirkin alert/confirm pencereleri yerine, tamamen Prepress Core renkleriyle uyumlu, premium özel modal pencereleri kullanın.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase / Next-Gen Client UI Experience Section -->
+        <section class="showcase-section" id="ui-experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="showcase-title">Yeni Nesil <span class="gradient-text">İstemci Deneyimi</span></h2>
+                    <p class="section-subtitle" data-i18n="showcase-subtitle">Adobe Illustrator içine gömülü çalışan eklentimizin tamamen özelleştirilebilir, kompakt ve modern arayüzünü canlı deneyimleyin.</p>
+                </div>
+
+                <div class="showcase-grid">
+                    <!-- Left: Control panel for the mockup -->
+                    <div class="showcase-controls">
+                        <!-- Control Box 1: Theme Sync -->
+                        <div class="control-box">
+                            <h3 class="control-box-title">
+                                <span class="icon">🎨</span>
+                                <span data-i18n="showcase-ctrl1-title">Illustrator Tema Senkronizasyonu</span>
+                            </h3>
+                            <p class="control-box-desc" data-i18n="showcase-ctrl1-desc">Illustrator arayüz renklerini değiştirdiğinizde panelin anlık ve yumuşak uyumunu izleyin:</p>
+                            <div class="theme-buttons">
+                                <button class="theme-btn active" data-theme="dark" title="Dark Theme">
+                                    <span class="color-dot dark"></span> Dark
+                                </button>
+                                <button class="theme-btn" data-theme="medium-dark" title="Medium Dark Theme">
+                                    <span class="color-dot medium-dark"></span> M-Dark
+                                </button>
+                                <button class="theme-btn" data-theme="medium-light" title="Medium Light Theme">
+                                    <span class="color-dot medium-light"></span> M-Light
+                                </button>
+                                <button class="theme-btn" data-theme="light" title="Light Theme">
+                                    <span class="color-dot light"></span> Light
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Control Box 2: Personalization & Compact -->
+                        <div class="control-box">
+                            <h3 class="control-box-title">
+                                <span class="icon">⚙️</span>
+                                <span data-i18n="showcase-ctrl2-title">Kişiselleştirme & Kompakt Arayüz</span>
+                            </h3>
+                            <p class="control-box-desc" data-i18n="showcase-ctrl2-desc">Sürükle-bırak sıralama animasyonunu ve yer tasarrufu sağlayan minimal grid düzenini test edin. Ayrıca sağdaki panelde script isimlerine çift tıklayarak kendiniz düzenleyebilirsiniz!</p>
+                            <div class="action-buttons">
+                                <button class="btn btn-outline btn-sm" id="btn-showcase-sort">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                    <span data-i18n="showcase-btn-sort">Modülleri Sırala</span>
+                                </button>
+                                <button class="btn btn-outline btn-sm" id="btn-showcase-compact">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                                    <span data-i18n="showcase-btn-compact">Kompakt Görünüm</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Control Box 3: Custom Modal -->
+                        <div class="control-box">
+                            <h3 class="control-box-title">
+                                <span class="icon">✨</span>
+                                <span data-i18n="showcase-ctrl3-title">Premium Onay Penceresi</span>
+                            </h3>
+                            <p class="control-box-desc" data-i18n="showcase-ctrl3-desc">İşletim sistemlerinin kaba ve çirkin varsayılan onay modal pencereleri yerine tasarladığımız bütünleşik kullanıcı arayüzünü görün:</p>
+                            <button class="btn btn-primary btn-sm" id="btn-showcase-modal" data-i18n="showcase-btn-modal">
+                                Özel Onay Modali Aç
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Illustrator CEP Mockup representing the features -->
+                    <div class="showcase-preview">
+                        <!-- Illustrator UI Frame wrapper -->
+                        <div class="illustrator-frame theme-dark" id="cep-showcase-mockup">
+                            <!-- Header bar with Illustrator styling -->
+                            <div class="ai-header">
+                                <span class="ai-tab-title">Prepress Core v1.2</span>
+                                <div class="ai-window-actions">
+                                    <span class="ai-action-btn minimize"></span>
+                                    <span class="ai-action-btn close"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- CEP content area -->
+                            <div class="ai-content">
+                                <div class="cep-head">
+                                    <div class="cep-branding">Prepress Core</div>
+                                    <span class="cep-status-pill online">ONLINE</span>
+                                </div>
+                                
+                                <div class="cep-search-bar">
+                                    <input type="text" placeholder="Modüllerde ara..." disabled class="cep-search-input">
+                                </div>
+                                
+                                <div class="cep-sub-title">Yüklü Script Modülleri</div>
+                                
+                                <!-- Sortable/Compactable Modules Container -->
+                                <div class="cep-modules-container" id="showcase-modules-list">
+                                    <div class="showcase-mod-item" id="showcase-mod-1" style="order: 1;">
+                                        <div class="mod-drag-handle">::</div>
+                                        <div class="mod-icon">K</div>
+                                        <div class="mod-details">
+                                            <div class="mod-name" contenteditable="true" title="Düzenlemek için çift tıklayın" data-i18n="mockup-mod-kros-name">Kros Ekle</div>
+                                            <div class="mod-description" data-i18n="mockup-mod-kros-desc">Otomatik baskı krosları yerleştirir.</div>
+                                        </div>
+                                    </div>
+                                    <div class="showcase-mod-item" id="showcase-mod-2" style="order: 2;">
+                                        <div class="mod-drag-handle">::</div>
+                                        <div class="mod-icon">R</div>
+                                        <div class="mod-details">
+                                            <div class="mod-name" contenteditable="true" title="Düzenlemek için çift tıklayın" data-i18n="mockup-mod-renk-name">Renk Analizi</div>
+                                            <div class="mod-description" data-i18n="mockup-mod-renk-desc">Mürekkep yoğunluğu kontrolü.</div>
+                                        </div>
+                                    </div>
+                                    <div class="showcase-mod-item" id="showcase-mod-3" style="order: 3;">
+                                        <div class="mod-drag-handle">::</div>
+                                        <div class="mod-icon">G</div>
+                                        <div class="mod-details">
+                                            <div class="mod-name" contenteditable="true" title="Düzenlemek için çift tıklayın" data-i18n="mockup-mod-gorsel-name">Görsel Kontrol</div>
+                                            <div class="mod-description" data-i18n="mockup-mod-gorsel-desc">Çözünürlük ve DPI denetimi yapar.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cep-sub-title">Sistem Bilgileri</div>
+                                <div class="cep-sys-info">
+                                    <div class="info-row">
+                                        <span>Lisans Sürümü:</span>
+                                        <span class="info-val">v1.2.0 (Pro)</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span>Otomatik Güncelleme:</span>
+                                        <span class="info-val secure-val">Aktif ✔</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Custom confirmation modal overlay inside mockup -->
+                            <div class="ai-modal-overlay" id="showcase-modal-overlay">
+                                <div class="ai-modal-box">
+                                    <div class="ai-modal-icon">⚠️</div>
+                                    <h4 class="ai-modal-title" data-i18n="showcase-modal-title">Görsel Kontrolü Başlat?</h4>
+                                    <p class="ai-modal-text" data-i18n="showcase-modal-text">Bu işlem yüksek çözünürlüklü görselleri tarayacaktır. Devam etmek istiyor musunuz?</p>
+                                    <div class="ai-modal-buttons">
+                                        <button class="modal-btn cancel" id="btn-modal-cancel" data-i18n="showcase-modal-cancel">Vazgeç</button>
+                                        <button class="modal-btn confirm" id="btn-modal-confirm" data-i18n="showcase-modal-confirm">Onayla</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sandbox/Simulator Section -->
+        <section class="sandbox-section" id="sandbox">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="sandbox-title">Prepress <span class="gradient-text">Simülatör İstasyonu</span></h2>
+                    <p class="section-subtitle" data-i18n="sandbox-subtitle">Sistemin arka planda nasıl çalıştığını görün. Dağıtıcı paneli üzerinden yapılan uzaktan işlemlerin Illustrator istemcinize yansımasını izleyin.</p>
+                </div>
+
+                <div class="sandbox-preview-card">
+                    <div class="preview-backdrop-glow"></div>
+                    <div class="preview-content">
+                        <div class="preview-left">
+                            <h3 data-i18n="sandbox-preview-title">İnteraktif B2B Sunum Deneyimi</h3>
+                            <p data-i18n="sandbox-preview-desc">Merkezi admin panelinden yönetilen HWID kilitlerini, RAM üzerinde şifre çözme (RAM-Decrypt) animasyonlarını, otomatik güncellemeleri ve lisans hedefli B2B modül yayınlarını 6 farklı senaryo ile canlı olarak deneyimleyin.</p>
+                            <div class="preview-features-list">
+                                <div class="preview-feat-item">
+                                    <svg class="feat-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                                    <span data-i18n="sandbox-feat-1">HWID Donanım Kilidi</span>
+                                </div>
+                                <div class="preview-feat-item">
+                                    <svg class="feat-icon purple" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                                    <span data-i18n="sandbox-feat-2">RAM Üzerinde Şifre Çözme</span>
+                                </div>
+                                <div class="preview-feat-item">
+                                    <svg class="feat-icon orange" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                                    <span data-i18n="sandbox-feat-3">Sessiz &amp; Otomatik Güncelleme</span>
+                                </div>
+                                <div class="preview-feat-item">
+                                    <svg class="feat-icon green" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                                    <span data-i18n="sandbox-feat-4">24s Çevrimdışı Önbellek</span>
+                                </div>
+                            </div>
+                            <a href="sandbox.html" target="_blank" class="btn-launch-sim">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span data-i18n="sandbox-btn-launch">Simülatörü Başlat</span>
+                            </a>
+                        </div>
+                        <div class="preview-right">
+                            <div class="mockup-layered-visual">
+                                <div class="layer-item admin-mock-layer">
+                                    <div class="mock-tag font-outfit">ADMIN PORTAL</div>
+                                    <div class="mock-body-mini">
+                                        <div class="mock-row"></div>
+                                        <div class="mock-row"></div>
+                                        <div class="mock-row"></div>
+                                    </div>
+                                </div>
+                                <div class="layer-item pipeline-mock-layer">
+                                    <div class="pipeline-pulse-dot"></div>
+                                </div>
+                                <div class="layer-item cep-mock-layer">
+                                    <div class="mock-tag font-outfit">ILLUSTRATOR CEP</div>
+                                    <div class="mock-body-mini">
+                                        <div class="mock-circle-center"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Architecture & Workflow Section -->
+        <section class="architecture-section" id="architecture">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="arch-title">Sistem <span class="gradient-text">Nasıl Çalışır?</span></h2>
+                    <p class="section-subtitle" data-i18n="arch-subtitle">Güvenlik ve kesintisiz çalışmayı garanti eden 3 katmanlı veri akışı.</p>
+                </div>
+
+                <div class="arch-tabs">
+                    <div class="arch-tabs-header">
+                        <button class="arch-tab-btn active" data-tab="security" data-i18n="arch-tab-security">AES-256 Şifreleme</button>
+                        <button class="arch-tab-btn" data-tab="hwid" data-i18n="arch-tab-hwid">HWID Lisanslama</button>
+                        <button class="arch-tab-btn" data-tab="offline" data-i18n="arch-tab-offline">Çevrimdışı Toleransı</button>
+                    </div>
+                    <div class="arch-tabs-body">
+                        <!-- Tab Content 1 -->
+                        <div class="arch-tab-content active" id="tab-security">
+                            <div class="arch-flex">
+                                <div class="arch-text">
+                                    <h3 data-i18n="arch-sec-title">Kodlarınız Her Zaman Güvende</h3>
+                                    <p data-i18n="arch-sec-desc">Tasarımcıların bilgisayarlarına inen scriptlerin çalınmasını ve yetkisiz dağıtılmasını önlemek için geliştirilmiş uçtan uca şifreleme.</p>
+                                    <ul class="arch-list">
+                                        <li data-i18n="arch-sec-li1"><strong>Sunucuda Şifreli Depolama:</strong> Sunucuya yüklenen scriptler diske kaydedilmeden önce AES-256-CBC algoritmasıyla şifrelenir.</li>
+                                        <li data-i18n="arch-sec-li2"><strong>Güvenli Aktarım:</strong> Dosyalar istemciye şifreli formatta transfer edilir. Ortadaki adam (MITM) saldırılarında bile kodlar okunamaz.</li>
+                                        <li data-i18n="arch-sec-li3"><strong>RAM'de Çözme:</strong> CEP panel dosyayı diske kaydetmez. Scriptler doğrudan bellek üzerinde (RAM) çözülerek Illustrator motorunda çalıştırılır.</li>
+                                    </ul>
+                                </div>
+                                <div class="arch-illustration">
+                                    <div class="flow-chart">
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-sec-chart1">JSX / ZXP Kodları</div>
+                                            <div class="node-desc" data-i18n="arch-sec-chart1-desc">Orijinal Script</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-sec-arrow1"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:middle; margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> AES-256 Şifreleme</div>
+                                        <div class="flow-node highlight">
+                                            <div class="node-title" data-i18n="arch-sec-chart2">Şifreli Sunucu Deposu</div>
+                                            <div class="node-desc" data-i18n="arch-sec-chart2-desc">Okunamaz Kod Blokları</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-sec-arrow2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> HTTPS Transfer</div>
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-sec-chart3">Illustrator RAM</div>
+                                            <div class="node-desc" data-i18n="arch-sec-chart3-desc">Bellekte Çözülüp Çalıştırılır</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 2 -->
+                        <div class="arch-tab-content" id="tab-hwid">
+                            <div class="arch-flex">
+                                <div class="arch-text">
+                                    <h3 data-i18n="arch-hwid-title">Tek Lisans, Tek Donanım</h3>
+                                    <p data-i18n="arch-hwid-desc">Ürettiğiniz lisans anahtarlarının kontrolsüz şekilde paylaşılmasını önleyen donanım tabanlı doğrulama motoru.</p>
+                                    <ul class="arch-list">
+                                        <li data-i18n="arch-hwid-li1"><strong>Anakart ve MAC ID:</strong> İstemci bilgisayarındaki `node-machine-id` kütüphanesi donanımlara özgü benzersiz bir kimlik (UUID) türetir.</li>
+                                        <li data-i18n="arch-hwid-li2"><strong>İlk Kurulum Kilidi:</strong> Lisans anahtarı ilk kez girildiğinde bu UUID ile sunucu tarafında kalıcı olarak eşleştirilir.</li>
+                                        <li data-i18n="arch-hwid-li3"><strong>Kill-Switch Sistemi:</strong> Bir lisans iptal edildiğinde, sunucu bunu anında algılar ve uzaktaki Illustrator panelinin arayüzünü devre dışı bırakır.</li>
+                                    </ul>
+                                </div>
+                                <div class="arch-illustration">
+                                    <div class="flow-chart">
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-hwid-chart1">Illustrator CEP Paneli</div>
+                                            <div class="node-desc" data-i18n="arch-hwid-chart1-desc">UUID ve Lisans Anahtarı Alır</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-hwid-arrow1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> Sunucu API Sorgusu</div>
+                                        <div class="flow-node highlight">
+                                            <div class="node-title" data-i18n="arch-hwid-chart2">HWID Doğrulama Motoru</div>
+                                            <div class="node-desc" data-i18n="arch-hwid-chart2-desc">UUID Kaydı Uyuşuyor mu?</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-hwid-arrow2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Sonuç</div>
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-hwid-chart3">Erişim İzni / Engel</div>
+                                            <div class="node-desc" data-i18n="arch-hwid-chart3-desc">Panel Kilit Açılır veya Kapanır</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 3 -->
+                        <div class="arch-tab-content" id="tab-offline">
+                            <div class="arch-flex">
+                                <div class="arch-text">
+                                    <h3 data-i18n="arch-off-title">Kesintisiz Baskı Akışı</h3>
+                                    <p data-i18n="arch-off-desc">İnternet kesildiğinde işleriniz durmaz, ancak lisans koruması da esnetilmez. 24 saatlik güvenli tolerans limitleri devrededir.</p>
+                                    <ul class="arch-list">
+                                        <li data-i18n="arch-off-li1"><strong>Son Başarılı Senkronizasyon:</strong> İstemci yerelinde, sunucuyla kurulan son başarılı bağlantının zaman damgası saklanır.</li>
+                                        <li data-i18n="arch-off-li2"><strong>24 Saatlik Sayaç:</strong> İnternet kopsa dahi istemci yerel önbellekteki şifreli scriptleri çözebilir ve tasarımcı 24 saat boyunca işine devam eder.</li>
+                                        <li data-i18n="arch-off-li3"><strong>Güvenli Kilitlenme:</strong> Süre dolduğu an, internet bağlantısı kurulana kadar şifre çözme anahtarları bellekten silinir ve panel kilitlenir.</li>
+                                    </ul>
+                                </div>
+                                <div class="arch-illustration">
+                                    <div class="flow-chart">
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-off-chart1">İnternet Bağlantı Kontrolü</div>
+                                            <div class="node-desc" data-i18n="arch-off-chart1-desc">Bağlantı Yok</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-off-arrow1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><path d="M6.5 7h11"/><path d="M6.5 17h11"/><path d="M6 20v-2a6 6 0 1 1 12 0v2"/><path d="M6 4v2a6 6 0 1 0 12 0V4"/></svg> 24h Kuralı Kontrolü</div>
+                                        <div class="flow-node highlight">
+                                            <div class="node-title" data-i18n="arch-off-chart2">Yerel Şifreli Cache</div>
+                                            <div class="node-desc" data-i18n="arch-off-chart2-desc">Son senkronizasyondan geçen süre &lt; 24 saat ise çalışmaya izin ver.</div>
+                                        </div>
+                                        <div class="flow-arrow" data-i18n="arch-off-arrow2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Süre Aşımı</div>
+                                        <div class="flow-node">
+                                            <div class="node-title" data-i18n="arch-off-chart3">Erişimi Kapat</div>
+                                            <div class="node-desc" data-i18n="arch-off-chart3-desc">Arayüz kilitlenir, internet beklenir.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="pricing">
+            <div class="container pricing-container">
+                <div class="section-header text-center" style="margin-bottom: 50px;">
+                    <h2 class="section-title" data-i18n="pricing-title">Lisans <span class="gradient-text">Paketleri</span></h2>
+                    <p class="section-subtitle" data-i18n="pricing-subtitle">İhtiyacınıza en uygun lisans süresini ve modelini seçerek hemen çalışmaya başlayın.</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- 1 Aylık Bireysel -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 data-i18n="pricing-pack1-title">1 Aylık Bireysel</h3>
+                            <div class="pricing-card-price">
+                                <span class="price-value" data-i18n="pricing-pack1-price">$49</span>
+                                <span class="price-period" data-i18n="pricing-pack1-period">/ Ay</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li data-i18n="pricing-feat-hwid">1 Cihaz HWID Kilitli Lisans</li>
+                            <li data-i18n="pricing-feat-offline">24 Saat Çevrimdışı Çalışma</li>
+                            <li data-i18n="pricing-feat-updates">Sessiz Güncellemeler</li>
+                            <li data-i18n="pricing-feat-support-std">Standart Destek (E-posta)</li>
+                        </ul>
+                        <a href="mailto:efeskarabag@gmail.com?subject=Prepress%20Core%20Bireysel%20Aylik%20Lisans%20Talebi" class="btn btn-secondary btn-block pricing-btn" data-i18n="pricing-btn-select">Satın Al (İletişim)</a>
+                    </div>
+
+                    <!-- Yıllık Bireysel -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 data-i18n="pricing-pack2-title">Yıllık Bireysel</h3>
+                            <div class="pricing-card-price">
+                                <span class="price-value" data-i18n="pricing-pack2-price">$399</span>
+                                <span class="price-period" data-i18n="pricing-pack2-period">/ Yıl</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li data-i18n="pricing-feat-hwid">1 Cihaz HWID Kilitli Lisans</li>
+                            <li data-i18n="pricing-feat-offline">24 Saat Çevrimdışı Çalışma</li>
+                            <li data-i18n="pricing-feat-updates">Sessiz Güncellemeler</li>
+                            <li data-i18n="pricing-feat-support-pri">Öncelikli Destek</li>
+                            <li data-i18n="pricing-feat-beta">Yeni Beta Modüllere Erişim</li>
+                        </ul>
+                        <a href="mailto:efeskarabag@gmail.com?subject=Prepress%20Core%20Bireysel%20Yillik%20Lisans%20Talebi" class="btn btn-secondary btn-block pricing-btn" data-i18n="pricing-btn-select">Satın Al (İletişim)</a>
+                    </div>
+
+                    <!-- Çoklu Lisans Paketi -->
+                    <div class="pricing-card popular">
+                        <div class="pricing-badge" data-i18n="pricing-badge-popular">En Avantajlı</div>
+                        <div class="pricing-card-header">
+                            <h3 data-i18n="pricing-pack3-title">Çoklu Lisans (Team)</h3>
+                            <div class="pricing-card-price">
+                                <span class="price-value" data-i18n="pricing-pack3-price">$799</span>
+                                <span class="price-period" data-i18n="pricing-pack3-period">/ Yıl</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li data-i18n="pricing-feat-team-hwid">3 Cihaz HWID Kilitli Lisans</li>
+                            <li data-i18n="pricing-feat-team-key">Tek Yönetim / Lisans Anahtarı</li>
+                            <li data-i18n="pricing-feat-offline">24 Saat Çevrimdışı Çalışma</li>
+                            <li data-i18n="pricing-feat-updates">Sessiz Güncellemeler</li>
+                            <li data-i18n="pricing-feat-support-pri">Öncelikli Destek</li>
+                            <li data-i18n="pricing-feat-transfer-3">Lisans Taşıma (3 Kez)</li>
+                        </ul>
+                        <a href="mailto:efeskarabag@gmail.com?subject=Prepress%20Core%20Coklu%20Lisans%20Talebi" class="btn btn-primary btn-block pricing-btn" data-i18n="pricing-btn-select">Satın Al (İletişim)</a>
+                    </div>
+
+                    <!-- Kurumsal & Sınırsız -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 data-i18n="pricing-pack4-title">Kurumsal & Sınırsız</h3>
+                            <div class="pricing-card-price">
+                                <span class="price-value" data-i18n="pricing-pack4-price">$1499</span>
+                                <span class="price-period" data-i18n="pricing-pack4-period">/ Yıl</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li data-i18n="pricing-feat-corp-users">Tek Lisans ile Çoklu Kullanıcı</li>
+                            <li data-i18n="pricing-feat-corp-limit">Sınırsız / Anlaşmalı Cihaz Slotu</li>
+                            <li data-i18n="pricing-feat-corp-admin">Dağıtıcı Kontrol Paneli Yetkileri</li>
+                            <li data-i18n="pricing-feat-support-ded">7/24 Birebir Özel Destek</li>
+                            <li data-i18n="pricing-feat-custom">Özel Modül/Script Talepleri</li>
+                            <li data-i18n="pricing-feat-beta">Yeni Beta Modüllere Erişim</li>
+                        </ul>
+                        <a href="mailto:efeskarabag@gmail.com?subject=Prepress%20Core%20Kurumsal%20Lisans%20Talebi" class="btn btn-secondary btn-block pricing-btn" data-i18n="pricing-btn-select">Satın Al (İletişim)</a>
+                    </div>
+                </div>
+
+                <!-- Özel Talep / Custom Request Barı -->
+                <div class="pricing-custom-bar">
+                    <div class="custom-bar-info">
+                        <div class="custom-bar-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <div class="custom-bar-text">
+                            <h4 data-i18n="pricing-custom-title">Özel Modül & Entegrasyon Talepleri</h4>
+                            <p data-i18n="pricing-custom-desc">İş akışınıza özel JSX/ZXP modül geliştirme, özel entegrasyonlar veya farklı lisans adetleri için bizimle iletişime geçerek teklif alın.</p>
+                        </div>
+                    </div>
+                    <div class="custom-bar-action">
+                        <a href="mailto:efeskarabag@gmail.com?subject=Prepress%20Core%20Ozel%20Modul/Lisans%20Talep%20Teklifi" class="btn btn-primary" data-i18n="pricing-custom-btn">Teklif Al / İletişim</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download & Setup Section -->
+        <section class="download-section" id="downloads">
+            <div class="container download-container">
+                <div class="download-info">
+                    <h2 class="section-title" data-i18n="dl-title">Kuruluma <span class="gradient-text">Başlayın</span></h2>
+                    <p class="section-subtitle" data-i18n="dl-subtitle">İş akışınıza dahil olmak için size atanan lisans anahtarını hazırlayın ve bilgisayarınıza uygun olan istemci uygulamasını indirin.</p>
+                    
+                    <div class="system-reqs">
+                        <h4 data-i18n="dl-reqs-title">Sistem Gereksinimleri:</h4>
+                        <ul>
+                            <li><strong>Adobe Illustrator:</strong> CC 2021 ve üzeri (v25.0+)</li>
+                            <li data-i18n="dl-reqs-os-win"><strong>İşletim Sistemi (Windows):</strong> Windows 10 / 11 (64-bit)</li>
+                            <li data-i18n="dl-reqs-os-mac"><strong>İşletim Sistemi (macOS):</strong> macOS 10.15 (Catalina) ve üzeri</li>
+                            <li data-i18n="dl-reqs-conn"><strong>Bağlantı:</strong> Kurulum ve 24 saatte bir lisans kontrolü için internet erişimi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Download Card Actions -->
+                <div class="download-cards">
+                    <!-- Windows Download -->
+                    <div class="download-card">
+                        <div class="os-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+                        </div>
+                        <h3 data-i18n="dl-card-win-title">Windows İstemcisi</h3>
+                        <p class="card-desc" data-i18n="dl-card-win-desc">Matbaalar için Illustrator CEP Eklentisi (.zxp) ve otomatik kurulum yöneticisi (EXE).</p>
+                        <!-- Netlify trafiğini etkilemeyecek şekilde harici yönlendirme için placeholder -->
+                        <a href="#" class="btn btn-primary btn-block" id="btn-dl-win">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span data-i18n="dl-card-win-btn">Windows için İndir</span>
+                        </a>
+                        <span class="card-meta" data-i18n="dl-card-win-meta">Boyut: ~14.2 MB</span>
+                    </div>
+
+                    <!-- macOS Download -->
+                    <div class="download-card">
+                        <div class="os-icon">
+                            <!-- macOS Apple Logo Vector SVG -->
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.1 16.67C20.08 16.74 19.67 18.11 18.71 19.5M15.97 4.17C16.63 3.37 17.07 2.28 16.95 1C16 1.04 14.9 1.6 14.24 2.38C13.68 3.04 13.19 4.14 13.34 5.39C14.39 5.47 15.4 4.88 15.97 4.17Z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="dl-card-mac-title">macOS İstemcisi</h3>
+                        <p class="card-desc" data-i18n="dl-card-mac-desc">Intel & Apple Silicon mimarileriyle uyumlu CEP eklenti paketi (DMG / ZXP).</p>
+                        <!-- Netlify trafiğini etkilemeyecek şekilde harici yönlendirme için placeholder -->
+                        <a href="#" class="btn btn-primary btn-block" id="btn-dl-mac">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span data-i18n="dl-card-mac-btn">macOS için İndir</span>
+                        </a>
+                        <span class="card-meta" data-i18n="dl-card-mac-meta">Boyut: ~18.5 MB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="28" height="28" rx="6" stroke="url(#logo-grad-footer)" stroke-width="2.5" />
+                        <circle cx="16" cy="16" r="6" stroke="url(#logo-grad-footer)" stroke-width="2.5" />
+                        <line x1="16" y1="2" x2="16" y2="10" stroke="url(#logo-grad-footer)" stroke-width="2" />
+                        <line x1="16" y1="22" x2="16" y2="30" stroke="url(#logo-grad-footer)" stroke-width="2" />
+                        <line x1="2" y1="16" x2="10" y2="16" stroke="url(#logo-grad-footer)" stroke-width="2" />
+                        <line x1="22" y1="16" x2="30" y2="16" stroke="url(#logo-grad-footer)" stroke-width="2" />
+                        <defs>
+                            <linearGradient id="logo-grad-footer" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0ea5e9" />
+                                <stop offset="1" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">Prepress <span class="highlight">Core</span></span>
+                </div>
+                <p data-i18n="footer-desc">Adobe Illustrator için endüstriyel standartta uzaktan script dağıtım, lisanslama ve sürüm kontrol altyapısı.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4 data-i18n="footer-header-product">Ürün</h4>
+                <ul>
+                    <li><a href="#features" data-i18n="nav-features">Özellikler</a></li>
+                    <li><a href="sandbox.html" target="_blank" data-i18n="nav-sandbox">Sandbox Simülatörü</a></li>
+                    <li><a href="#architecture" data-i18n="nav-architecture">Mimari Şema</a></li>
+                    <li><a href="#downloads" data-i18n="nav-downloads">İndirmeler</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4 data-i18n="footer-header-contact">İletişim & Destek</h4>
+                <ul class="contact-info-list">
+                    <li>
+                        <strong>Web:</strong> 
+                        <a href="https://www.efeskarabag.com.tr" target="_blank" class="contact-link">www.efeskarabag.com.tr</a>
+                    </li>
+                    <li>
+                        <strong>E-posta:</strong> 
+                        <a href="mailto:efeskarabag@gmail.com" class="contact-link">efeskarabag@gmail.com</a>
+                    </li>
+                    <li>
+                        <strong>Telefon:</strong> 
+                        <a href="tel:+905459750795" class="contact-link">+90 545 975 0795</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p id="copyright-text"><a href="https://www.efeskarabag.com.tr" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. Tüm hakları saklıdır. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Link -->
+</body>
+</html>
