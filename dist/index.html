@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Vanilla CSS Link -->
-  <script type="module" crossorigin src="/assets/main-Dk0k2Lao.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-D-y6Fyp4.css">
+  <script type="module" crossorigin src="/assets/main-BgW69dCs.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BhKhiA5z.css">
 </head>
 <body>
 
@@ -894,6 +894,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- macOS Kurulum Bilgilendirme Modalı -->
+    <div class="global-modal-overlay" id="mac-warning-modal">
+        <div class="global-modal-box">
+            <button class="global-modal-close" id="btn-close-mac-warning">&times;</button>
+            <div class="global-modal-icon">⚠️</div>
+            <h4 class="global-modal-title" data-i18n="mac-warning-title">macOS Kurulum Uyarısı</h4>
+            <div class="global-modal-content">
+                <p data-i18n="mac-warning-p1">İndirme işleminiz başladı! Kurulum sırasında Apple Güvenlik Politikası (Gatekeeper) nedeniyle <strong>"Tanımlanamayan Geliştirici"</strong> uyarısı alabilirsiniz.</p>
+                <p data-i18n="mac-warning-p2">Bunu aşmak için lütfen şu adımları takip edin:</p>
+                <ol class="modal-steps-list">
+                    <li data-i18n="mac-warning-step1">İndirilen <code>prepress-core-setup-mac.pkg</code> dosyasına <strong>Sağ Tıklayın</strong> (veya Control tuşuna basılı tutarak tıklayın).</li>
+                    <li data-i18n="mac-warning-step2">Açılan menüden <strong>"Aç" (Open)</strong> seçeneğini seçin.</li>
+                    <li data-i18n="mac-warning-step3">Karşınıza çıkan pencerede tekrar <strong>"Aç"</strong> butonuna tıklayarak kurulum sihirbazını başlatın.</li>
+                </ol>
+            </div>
+            <div class="global-modal-buttons">
+                <button class="btn btn-primary" id="btn-mac-warning-ok" data-i18n="mac-warning-btn">Anladım, Devam Et</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Vanilla Javascript Link -->
 </body>

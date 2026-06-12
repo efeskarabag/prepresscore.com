@@ -210,6 +210,13 @@ const translations = {
         "dl-card-mac-desc": "Illustrator CEP Eklentisi ve otomatik macOS kurulum paketi (PKG).",
         "dl-card-mac-btn": "macOS için İndir",
         "dl-card-mac-meta": "Boyut: ~60 KB",
+        "mac-warning-title": "macOS Kurulum Uyarısı",
+        "mac-warning-p1": "İndirme işleminiz başladı! Kurulum sırasında Apple Güvenlik Politikası (Gatekeeper) nedeniyle <strong>\"Tanımlanamayan Geliştirici\"</strong> uyarısı alabilirsiniz.",
+        "mac-warning-p2": "Bunu aşmak için lütfen şu adımları takip edin:",
+        "mac-warning-step1": "İndirilen <code>prepress-core-setup-mac.pkg</code> dosyasına <strong>Sağ Tıklayın</strong> (veya Control tuşuna basılı tutarak tıklayın).",
+        "mac-warning-step2": "Açılan menüden <strong>\"Aç\" (Open)</strong> seçeneğini seçin.",
+        "mac-warning-step3": "Karşınıza çıkan pencerede tekrar <strong>\"Aç\"</strong> butonuna tıklayarak kurulum sihirbazını başlatın.",
+        "mac-warning-btn": "Anladım, Devam Et",
         "feat5-title": "Dinamik Tema Uyumu",
         "feat5-desc": "İstemci paneli, Adobe Illustrator'ın aktif renk ayarlarını (Dark, Light vb.) anlık algılar ve kendi arayüz temasını otomatik olarak senkronize eder.",
         "feat6-title": "Gelişmiş Kişiselleştirme",
@@ -413,6 +420,13 @@ const translations = {
         "dl-card-mac-desc": "Illustrator CEP Extension and automatic macOS installation package (PKG).",
         "dl-card-mac-btn": "Download for macOS",
         "dl-card-mac-meta": "Size: ~60 KB",
+        "mac-warning-title": "macOS Installation Warning",
+        "mac-warning-p1": "Your download has started! During installation, you may receive an <strong>\"Unidentified Developer\"</strong> warning due to Apple Security Policy (Gatekeeper).",
+        "mac-warning-p2": "Please follow these steps to bypass this issue:",
+        "mac-warning-step1": "<strong>Right-click</strong> the downloaded <code>prepress-core-setup-mac.pkg</code> file (or hold the Control key while clicking).",
+        "mac-warning-step2": "Select <strong>\"Open\"</strong> from the context menu.",
+        "mac-warning-step3": "Click <strong>\"Open\"</strong> again in the dialog box to launch the installation wizard.",
+        "mac-warning-btn": "Got it, Continue",
         "feat5-title": "Dynamic Theme Sync",
         "feat5-desc": "The client panel instantly detects Adobe Illustrator's active color settings (Dark, Light, etc.) and automatically synchronizes its own UI theme.",
         "feat6-title": "Advanced Personalization",
@@ -644,10 +658,39 @@ function initShowcaseWidget() {
     });
 }
 
-/* ==========================================================================
-   10. İndirme Butonları Kontrolü
-   ========================================================================== */
 function initDownloadButtons() {
-    // HTML'deki <a> etiketleri (href ve download özellikleri ile) indirmeyi doğrudan başlatacaktır.
+    const btnDlMac = document.getElementById("btn-dl-mac");
+    const macWarningModal = document.getElementById("mac-warning-modal");
+    const btnCloseMacWarning = document.getElementById("btn-close-mac-warning");
+    const btnMacWarningOk = document.getElementById("btn-mac-warning-ok");
+
+    if (btnDlMac && macWarningModal) {
+        btnDlMac.addEventListener("click", () => {
+            macWarningModal.classList.add("active");
+            // Not: a etiketinin default davranışı (href/download) indirmeyi arka planda başlatacaktır.
+        });
+    }
+
+    const closeMacModal = () => {
+        if (macWarningModal) {
+            macWarningModal.classList.remove("active");
+        }
+    };
+
+    if (btnCloseMacWarning) {
+        btnCloseMacWarning.addEventListener("click", closeMacModal);
+    }
+
+    if (btnMacWarningOk) {
+        btnMacWarningOk.addEventListener("click", closeMacModal);
+    }
+
+    if (macWarningModal) {
+        macWarningModal.addEventListener("click", (e) => {
+            if (e.target === macWarningModal) {
+                closeMacModal();
+            }
+        });
+    }
 }
 
