@@ -665,9 +665,9 @@ function initDownloadButtons() {
     const btnMacWarningOk = document.getElementById("btn-mac-warning-ok");
 
     if (btnDlMac && macWarningModal) {
-        btnDlMac.addEventListener("click", () => {
+        btnDlMac.addEventListener("click", (e) => {
+            e.preventDefault(); // Doğrudan indirmeyi engelle, önce uyarıyı göster
             macWarningModal.classList.add("active");
-            // Not: a etiketinin default davranışı (href/download) indirmeyi arka planda başlatacaktır.
         });
     }
 
@@ -682,7 +682,19 @@ function initDownloadButtons() {
     }
 
     if (btnMacWarningOk) {
-        btnMacWarningOk.addEventListener("click", closeMacModal);
+        btnMacWarningOk.addEventListener("click", () => {
+            closeMacModal();
+            
+            // Kullanıcı onayladıktan sonra indirmeyi programatik olarak başlat
+            const downloadUrl = "https://github.com/efeskarabag/prepresscore.com/raw/main/public/prepress-core-setup-mac.pkg";
+            const tempLink = document.createElement("a");
+            tempLink.href = downloadUrl;
+            tempLink.setAttribute("download", "prepress-core-setup-mac.pkg");
+            tempLink.style.display = "none";
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+        });
     }
 
     if (macWarningModal) {
