@@ -1,0 +1,14 @@
+Prepress Core Hub - Ücretsiz Demo Lisans Bilgileri
+===================================================
+
+Bu dosya, eklentiyi denemeniz ve test etmeniz amacıyla otomatik olarak oluşturulmuştur.
+
+1 Aylık Ücretsiz Demo Lisans Anahtarınız:
+PRE-CDB669C4-8424
+
+---------------------------------------------------
+Açıklamalar:
+1. Kurulum yapıldıktan sonra Adobe Illustrator programını açın.
+2. Eklenti paneli açıldığında, yukarıdaki lisans anahtarı giriş kutusunda otomatik olarak yazılı gelecektir.
+3. Doğrudan "Doğrula ve Bağlan" butonuna tıklayarak sisteme giriş yapabilirsiniz.
+4. Eğer anahtar silinirse veya çıkış yaparsanız, yukarıdaki anahtarı kopyalayıp tekrar yapıştırabilirsiniz.
