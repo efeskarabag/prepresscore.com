@@ -518,6 +518,7 @@ function initLanguageSystem() {
 }
 
 function applyTranslations() {
+    document.documentElement.lang = currentLang;
     const elements = document.querySelectorAll("[data-i18n]");
     const dict = translations[currentLang] || translations["tr"];
     if (!dict) return;
