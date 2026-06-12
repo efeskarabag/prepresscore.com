@@ -203,13 +203,13 @@ const translations = {
         "dl-reqs-os-mac": "<strong>İşletim Sistemi (macOS):</strong> macOS 10.15 (Catalina) ve üzeri",
         "dl-reqs-conn": "<strong>Bağlantı:</strong> Kurulum ve 24 saatte bir lisans kontrolü için internet erişimi.",
         "dl-card-win-title": "Windows İstemcisi",
-        "dl-card-win-desc": "Matbaalar için Illustrator CEP Eklentisi (.zxp) ve otomatik kurulum yöneticisi (EXE).",
+        "dl-card-win-desc": "Illustrator CEP Eklentisi ve otomatik Windows kurulum aracı (BAT içeren ZIP paketi).",
         "dl-card-win-btn": "Windows için İndir",
-        "dl-card-win-meta": "Boyut: ~14.2 MB",
+        "dl-card-win-meta": "Boyut: ~61 KB",
         "dl-card-mac-title": "macOS İstemcisi",
-        "dl-card-mac-desc": "Intel & Apple Silicon mimarileriyle uyumlu matbaa istemci paketi (DMG / ZXP).",
+        "dl-card-mac-desc": "Illustrator CEP Eklentisi ve otomatik macOS kurulum aracı (COMMAND içeren ZIP paketi).",
         "dl-card-mac-btn": "macOS için İndir",
-        "dl-card-mac-meta": "Boyut: ~18.5 MB",
+        "dl-card-mac-meta": "Boyut: ~61 KB",
         "feat5-title": "Dinamik Tema Uyumu",
         "feat5-desc": "İstemci paneli, Adobe Illustrator'ın aktif renk ayarlarını (Dark, Light vb.) anlık algılar ve kendi arayüz temasını otomatik olarak senkronize eder.",
         "feat6-title": "Gelişmiş Kişiselleştirme",
@@ -406,13 +406,13 @@ const translations = {
         "dl-reqs-os-mac": "<strong>Operating System (macOS):</strong> macOS 10.15 (Catalina) and above",
         "dl-reqs-conn": "<strong>Connection:</strong> Internet access for setup and license verification once every 24 hours.",
         "dl-card-win-title": "Windows Client",
-        "dl-card-win-desc": "Illustrator CEP Extension (.zxp) and automatic installer manager (EXE) for print shops.",
+        "dl-card-win-desc": "Illustrator CEP Extension and automatic Windows installer tool (ZIP package with BAT).",
         "dl-card-win-btn": "Download for Windows",
-        "dl-card-win-meta": "Size: ~14.2 MB",
+        "dl-card-win-meta": "Size: ~61 KB",
         "dl-card-mac-title": "macOS Client",
-        "dl-card-mac-desc": "Matbaa client package compatible with Intel & Apple Silicon architectures (DMG / ZXP).",
+        "dl-card-mac-desc": "Illustrator CEP Extension and automatic macOS installer tool (ZIP package with COMMAND).",
         "dl-card-mac-btn": "Download for macOS",
-        "dl-card-mac-meta": "Size: ~18.5 MB",
+        "dl-card-mac-meta": "Size: ~61 KB",
         "feat5-title": "Dynamic Theme Sync",
         "feat5-desc": "The client panel instantly detects Adobe Illustrator's active color settings (Dark, Light, etc.) and automatically synchronizes its own UI theme.",
         "feat6-title": "Advanced Personalization",
@@ -652,10 +652,9 @@ function initDownloadButtons() {
     const macBtn = document.getElementById("btn-dl-mac");
 
     const showDownloadAlert = (e, osName) => {
-        e.preventDefault();
         const msg = currentLang === "tr"
-            ? `Prepress Core ${osName} İstemci kurulum paketi (ZXP/installer) indiriliyor... Lütfen matbaa yöneticinizden aldığınız lisans anahtarını hazırlayın.`
-            : `Downloading Prepress Core ${osName} Client installation package (ZXP/installer)... Please prepare the license key obtained from your studio administrator.`;
+            ? `Prepress Core ${osName} İstemci kurulum paketi (ZIP) indiriliyor... Lütfen matbaa yöneticinizden aldığınız lisans anahtarını hazırlayın.`
+            : `Downloading Prepress Core ${osName} Client installation package (ZIP)... Please prepare the license key obtained from your studio administrator.`;
         alert(msg);
     };
 
