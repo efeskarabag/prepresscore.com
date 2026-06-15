@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initLanguageSystem();
     initShowcaseWidget();
     initDownloadButtons();
+    initContactForm();
+    initDocsModal();
 });
 
 /* ==========================================================================
@@ -120,24 +122,24 @@ const translations = {
         "feat4-title": "Otomatik & Sessiz Güncellemeler",
         "feat4-desc": "Arayüze yeni bir modül eklendiğinde kurulum dosyasını tekrar indirmenize gerek yoktur. Panel, yeni sürümleri API üzerinden otomatik denetler ve saniyeler içinde sessizce kurar.",
         "sandbox-title": "Prepress <span class=\"gradient-text\">Simülatör İstasyonu</span>",
-        "sandbox-subtitle": "Sistemin arka planda nasıl çalıştığını görün. Dağıtıcı paneli üzerinden yapılan uzaktan işlemlerin Illustrator istemcinize yansımasını izleyin.",
-        "sandbox-preview-title": "İnteraktif B2B Sunum Deneyimi",
-        "sandbox-preview-desc": "Merkezi admin panelinden yönetilen HWID kilitlerini, RAM üzerinde şifre çözme (RAM-Decrypt) animasyonlarını, otomatik güncellemeleri ve lisans hedefli B2B modül yayınlarını 6 farklı senaryo ile canlı olarak deneyimleyin.",
+        "sandbox-subtitle": "Prepress Core dağıtım altyapısının çalışma mantığını görün. Geliştiriciler (yayıncılar) için tasarlanan yönetim paneli üzerinden yapılan işlemlerin Illustrator istemcinize nasıl yansıdığını izleyin.",
+        "sandbox-preview-title": "İnteraktif Sunum ve Dağıtım Deneyimi",
+        "sandbox-preview-desc": "Yayıncı kontrol panelinden yönetilen HWID kilitlerini, RAM üzerinde anlık şifre çözme (RAM-Decrypt) işlemlerini, otomatik güncellemeleri ve lisans tabanlı script yayınlamayı (tıpkı oyun geliştiricilerinin Steam üzerinden içerik yayınlaması gibi) interaktif senaryolarla canlı olarak deneyimleyin.",
         "sandbox-feat-1": "HWID Donanım Kilidi",
         "sandbox-feat-2": "RAM Üzerinde Şifre Çözme",
         "sandbox-feat-3": "Sessiz & Otomatik Güncelleme",
         "sandbox-feat-4": "24s Çevrimdışı Önbellek",
         "sandbox-btn-launch": "Simülatörü Başlat",
-        "sandbox-admin-tag": "Dağıtıcı Sunucu Arayüzü",
+        "sandbox-admin-tag": "Yayıncı Yönetim Arayüzü (Steamworks Modeli)",
         "sandbox-admin-badge": "SUNUCU AKTİF",
-        "sandbox-notice-title": "Dağıtıcı & Sunucu Yönetim Merkezi",
-        "sandbox-control-desc": "Sistem yöneticisi arayüzü gizlidir. Buradaki kontrolleri kullanarak dağıtıcının uzaktan yapabileceği lisans iptali veya modül güncelleme işlemlerinin matbaadaki Illustrator istemcisinde nasıl anlık işlendiğini deneyimleyebilirsiniz.",
+        "sandbox-notice-title": "Yayıncı & Sunucu Yönetim Paneli",
+        "sandbox-control-desc": "Yayıncı/geliştirici arayüzü özeldir ve son kullanıcılara gösterilmez. Buradaki interaktif simülatör sayesinde, yayıncının (Steamworks paneli gibi) sunucudan yaptığı lisans kilitleme veya script/oyun güncelleme işlemlerinin Illustrator istemcisinde nasıl anlık işlendiğini test edebilirsiniz.",
         "sandbox-admin-group1": "1. Uzaktan Lisans Kontrolü",
-        "sandbox-admin-help1": "Dağıtıcı olarak lisansı kapatıp son kullanıcının erişimini kesmeyi (Kill-Switch) deneyin.",
+        "sandbox-admin-help1": "Yayıncı olarak lisansı devre dışı bırakıp son kullanıcının erişimini anında kesmeyi (Kill-Switch) deneyin.",
         "sandbox-admin-toggle-lbl": "Lisans Aktif (Kill-Switch)",
         "sandbox-admin-hwid-status": "Eşleşen Donanım: Yok",
         "sandbox-admin-group2": "2. Script Güncelleme Testi",
-        "sandbox-admin-help2": "Dağıtıcı olarak istemciye yeni bir şifreli script güncellemesi (ZXP) gönderin.",
+        "sandbox-admin-help2": "Yayıncı olarak istemciye yeni bir şifreli script güncellemesi (ZXP) yayınlayın.",
         "sandbox-admin-uploader-title": "Görsel Kontrol Modülü",
         "sandbox-admin-btn-publish": "Sunucudan Güncellemeyi Gönder",
         "sandbox-admin-group3": "Sunucu ve API Günlükleri",
@@ -155,17 +157,17 @@ const translations = {
         "sandbox-client-offline-lbl": "Kalan Çevrimdışı Süre: 24 saat",
         "sandbox-client-log-title": "Matbaa Terminal Günlüğü",
         "arch-title": "Sistem <span class=\"gradient-text\">Nasıl Çalışır?</span>",
-        "arch-subtitle": "Dağıtıcı ve matbaa arasındaki veri akışını ve lisans güvenliğini sağlayan 3 katmanlı altyapı.",
+        "arch-subtitle": "Yayıncı sunucusu ile Illustrator istemcisi arasındaki veri akışını ve lisans güvenliğini sağlayan 3 katmanlı altyapı.",
         "arch-tab-security": "AES-256 Şifreleme",
         "arch-tab-hwid": "HWID Lisanslama",
         "arch-tab-offline": "Çevrimdışı Toleransı",
         "arch-sec-title": "Kodlarınız Her Zaman Güvende",
-        "arch-sec-desc": "Prepress Core tarafından hazırlanan scriptlerin çalınmasını ve yetkisiz dağıtılmasını önlemek için geliştirilmiş uçtan uca şifreleme.",
+        "arch-sec-desc": "Geliştiricilerin hazırladığı scriptlerin çalınmasını ve yetkisiz dağıtılmasını önlemek için geliştirilmiş uçtan uca şifreleme.",
         "arch-sec-li1": "<strong>Sunucuda Şifreli Depolama:</strong> Hazırlanan modüller sunucuda AES-256-CBC algoritmasıyla şifreli olarak saklanır.",
         "arch-sec-li2": "<strong>Güvenli Aktarım:</strong> Dosyalar istemciye şifreli formatta transfer edilir. Ortadaki adam (MITM) saldırılarında bile kodlar okunamaz.",
         "arch-sec-li3": "<strong>RAM'de Çözme:</strong> CEP eklentisi kodları diske kaydetmez. Scriptler doğrudan bellek üzerinde (RAM) çözülerek Illustrator motorunda çalıştırılır.",
         "arch-sec-chart1": "JSX / ZXP Kodları",
-        "arch-sec-chart1-desc": "Dağıtıcı Scriptleri",
+        "arch-sec-chart1-desc": "Geliştirici/Yayıncı Scriptleri",
         "arch-sec-arrow1": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"none\" style=\"vertical-align:middle; margin-right:4px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg> AES-256 Şifreleme",
         "arch-sec-chart2": "Şifreli Sunucu Deposu",
         "arch-sec-chart2-desc": "Okunamaz Kod Blokları",
@@ -242,9 +244,12 @@ const translations = {
         "showcase-modal-text": "Bu işlem yüksek çözünürlüklü görselleri tarayacaktır. Devam etmek istiyor musunuz?",
         "showcase-modal-cancel": "Vazgeç",
         "showcase-modal-confirm": "Onayla",
-        "footer-desc": "Adobe Illustrator için dağıtıcı kontrollü uzaktan script dağıtım, lisanslama ve sürüm kontrol altyapısı.",
+        "footer-desc": "Adobe Illustrator script ve uzantı geliştiricileri için merkezi script dağıtım, HWID lisanslama ve sürüm yönetim platformu.",
         "footer-header-product": "Ürün",
         "footer-header-contact": "İletişim & Destek",
+        "contact-web": "Web:",
+        "contact-email": "E-posta:",
+        "contact-phone": "Telefon:",
         "nav-pricing": "Fiyatlandırma",
         "pricing-title": "Lisans <span class=\"gradient-text\">Paketleri</span>",
         "pricing-subtitle": "İhtiyacınıza en uygun lisans süresini ve modelini seçerek hemen çalışmaya başlayın.",
@@ -255,7 +260,7 @@ const translations = {
         "pricing-pack2-title": "Yıllık Bireysel",
         "pricing-pack2-price": "$399",
         "pricing-pack2-period": "/ Yıl",
-        "pricing-pack3-title": "Çoklu Lisans (Team)",
+        "pricing-pack3-title": "Çoklu Lisans (Stüdyo)",
         "pricing-pack3-price": "$799",
         "pricing-pack3-period": "/ Yıl",
         "pricing-pack4-title": "Kurumsal & Sınırsız",
@@ -263,18 +268,17 @@ const translations = {
         "pricing-pack4-period": "/ Yıl",
         "pricing-feat-hwid": "1 Cihaz HWID Kilitli Lisans",
         "pricing-feat-team-hwid": "3 Cihaz HWID Kilitli Lisans",
-        "pricing-feat-team-key": "Tek Yönetim / Lisans Anahtarı",
-        "pricing-feat-offline": "24 Saat Çevrimdışı Çalışma",
-        "pricing-feat-updates": "Sessiz Güncellemeler",
+        "pricing-feat-team-key": "Tek Panel / Lisans Yönetim Anahtarı",
+        "pricing-feat-offline": "24 Saat Çevrimdışı Çalışabilme",
+        "pricing-feat-updates": "Sessiz ve Otomatik Güncellemeler",
         "pricing-feat-support-std": "Standart Destek (E-posta)",
         "pricing-feat-support-pri": "Öncelikli Destek",
-        "pricing-feat-support-ded": "7/24 Birebir Özel Destek",
-        "pricing-feat-transfer-3": "Lisans Taşıma (3 Kez)",
-        "pricing-feat-beta": "Yeni Beta Modüllere Erişim",
-        "pricing-feat-corp-users": "Tek Lisans ile Çoklu Kullanıcı",
+        "pricing-feat-support-ded": "7/24 Kesintisiz Özel Destek",
+        "pricing-feat-transfer-3": "Lisans Taşıma (Yıllık 3 Kez)",
+        "pricing-feat-beta": "Yeni Beta Modüllerine Erişim",
+        "pricing-feat-corp-users": "Tek Lisans Altında Çoklu Kullanıcı",
         "pricing-feat-corp-limit": "Sınırsız / Anlaşmalı Cihaz Slotu",
-        "pricing-feat-corp-admin": "Dağıtıcı Kontrol Paneli Yetkileri",
-        "pricing-feat-custom": "Özel Modül/Script Talepleri",
+        "pricing-feat-corp-admin": "Yayıncı/Dağıtıcı Kontrol Paneli Yetkileri",
         "pricing-btn-select": "Satın Al (İletişim)",
         "pricing-custom-title": "Özel Modül & Entegrasyon Talepleri",
         "pricing-custom-desc": "İş akışınıza özel JSX/ZXP modül geliştirme, özel entegrasyonlar veya farklı lisans adetleri için bizimle iletişime geçerek teklif alın.",
@@ -297,7 +301,33 @@ const translations = {
         "demo-feat-2": "Kurulum sonrası anında aktif",
         "demo-feat-3": "Kredi kartı gerekmez",
         "demo-cta": "İndirin ve Başlayın",
-        "demo-copied": "Kopyalandı!"
+        "demo-copied": "Kopyalandı!",
+        "contact-title": "İletişim & <span class=\"gradient-text\">Destek</span>",
+        "contact-info-title": "Hızlı İletişim",
+        "contact-subtitle": "Sorularınız, iş birliği teklifleriniz veya özel script talepleriniz için bize ulaşın.",
+        "contact-label-name": "İsim",
+        "contact-label-email": "E-posta",
+        "contact-label-message": "Mesaj",
+        "contact-placeholder-name": "Adınız Soyadınız",
+        "contact-placeholder-email": "ornek@domain.com",
+        "contact-placeholder-message": "Mesajınızı buraya yazın...",
+        "contact-btn-send": "Mesaj Gönder",
+        "nav-contact": "İletişim",
+        "footer-header-resources": "Kaynaklar",
+        "footer-status-text": "Tüm Sistemler Aktif",
+        "nav-docs": "Belgeler & Rehberler",
+        "nav-faq": "Sıkça Sorulan Sorular",
+        "nav-release-notes": "Sürüm Notları",
+        "nav-eula": "Lisans Sözleşmesi",
+        "docs-modal-close": "Kapat",
+        "docs-title-docs": "Belgeler & Rehberler",
+        "docs-content-docs": '<h5>Kurulum Adımları</h5><p>1. İndirilen paketi (.exe veya .pkg) çift tıklayarak çalıştırın.</p><p>2. Illustrator uygulamanızı yeniden başlatın.</p><p>3. Üst menüden <strong>Pencere &gt; Uzantılar &gt; Prepress Core</strong> yolunu izleyin.</p><br><h5>Lisans Aktivasyonu</h5><p>Size iletilen lisans anahtarını panel arayüzüne girip onaylayın. Sistem donanım kimliğinizi (HWID) otomatik olarak lisansınızla eşleştirecektir.</p>',
+        "docs-title-faq": "Sıkça Sorulan Sorular",
+        "docs-content-faq": '<div class="faq-accordion"><div class="faq-item"><button class="faq-trigger"><span>1. CEP panel / eklenti nedir ve normal scriptlerden farkı nedir?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Adobe Illustrator içerisinde tıpkı &quot;Katmanlar&quot; veya &quot;Renk&quot; paneli gibi yerleşik olarak çalışan gelişmiş bir arayüzdür. Dışarıdan script (.jsx) dosyası seçip çalıştırmakla uğraşmazsınız; tüm araçlar tek pencerede, görsel butonlarla elinizin altındadır.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>2. Hayatımda hiç eklenti kullanmadım, baskı öncesi (prepress) işlemlerinde bana nasıl yardımcı olur?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Normalde saatler süren manuel hizalama, kesim çizgisi (kros) ekleme, renk analizi, görsel çözünürlük kontrolleri ve taşma payı verme gibi kritik işleri tek tıklamayla saniyeler içinde hatasız yapar. Hata yapma riskinizi sıfıra indirerek matbaa baskı süreçlerinde oluşabilecek fireleri önler.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>3. Donanım Kilidi (HWID) nedir ve neden gereklidir? Bilgisayarıma zarar verir mi?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>HWID, lisansınızın sadece size ait bilgisayarda çalışmasını sağlayan güvenli bir donanım kimliğidir. Kesinlikle bilgisayarınıza zarar vermez veya kişisel verilerinizi toplamaz. Bankacılık uygulamalarının telefonunuzu eşlemesine benzer şekilde, eklenti lisansının izinsiz kopyalanmasını veya çalınmasını önler.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>4. İnternet bağlantım koptuğunda eklentiyi kullanmaya devam edebilir miyim?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Evet. Sistemimiz matbaalardaki internet kesintilerini öngörerek 24 saatlik çevrimdışı toleransı ile tasarlanmıştır. İnternetiniz tamamen kopsa bile, son bağlantıdan itibaren 24 saat boyunca tüm özellikleri şifreli yerel önbellek sayesinde kesintisiz kullanabilirsiniz.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>5. Illustrator sürümünü güncellersem veya yeni bir bilgisayara geçersem ne olur?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Panelimiz Adobe güncellemelerini arka planda otomatik takip eder ve kendini uyumlu hale getirir. Yeni bilgisayara geçişte ise tek yapmanız gereken, yayıncı/destek ekibimizle iletişime geçerek eski cihazınızın donanım kaydını (HWID) sıfırlatıp yeni cihazınızda eklentiyi tekrar aktifleştirmektir. Yayıncılar kendi yönetim panelleri (distribütör paneli) üzerinden bu işlemi anında gerçekleştirebilmektedir.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>6. Güvenlik ve kod koruması nasıl sağlanıyor? Tasarımlarım veya dosyalarım dışarı aktarılıyor mu?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Kesinlikle hayır. Panel, tasarımlarınızı veya dosyalarınızı hiçbir şekilde dış sunuculara göndermez; tüm işlemler yerel olarak bilgisayarınızda gerçekleşir. Sunucu ile sadece şifreli lisans doğrulaması ve script güncellemeleri alışverişi yapılır. Kodlarımız ise RAM üzerinde anlık olarak çözülerek çalıştırıldığı için üçüncü şahıslar tarafından kopyalanamaz veya çalınamaz.</p></div></div></div></div>',
+        "docs-title-release": "Sürüm Notları",
+        "docs-content-release": '<h5>Sürüm v1.0.4 (Güncel)</h5><p>- Yoğun SVG yolları işlenirken CEF (Chromium Embedded Framework) konteynerinde oluşan IPC köprüsü bellek sızıntısı giderildi.</p><p>- JSX HostScript motoru değerlendirmesi ile CEP JS asenkron geri çağırma (callback) iş parçacıkları arasındaki senkronizasyon yarış durumu (race-condition) çözüldü.</p><p>- Adobe Illustrator 2026 koyu arayüz modu senkronizasyonunda oluşan renk paleti dönüştürme matrisi sapması (offset) düzeltildi.</p><br><h5>Sürüm v1.0.3</h5><p>- Bellek dökümleri (cold-boot dumps) üzerinden kod sızıntısını önlemek için RAM üzerindeki AES-256 şifre çözülmüş arabellek (buffer) tahsisi güvenli hale getirildi.</p><p>- Çevrimdışı önbellek doğrulama işlemi sırasında katalog aramalarını hızlandırmak için yerel veritabanı indekslemesi optimize edildi.</p><p>- JSX yürütülmesi sırasında ana arayüz teması değiştiğinde script yükleyicide oluşan null-pointer hatası giderildi.</p>',
+        "docs-title-eula": "Lisans Sözleşmesi (EULA)",
+        "docs-content-eula": '<h5>YAZILIM LİSANS SÖZLEŞMESİ (EULA)</h5><p>Bu son kullanıcı lisans sözleşmesi, Prepress Core yazılım ürününün kullanım şartlarını belirler. Yazılımı yükleyerek bu şartları kabul etmiş olursunuz.</p><p><strong>1. Lisans Kapsamı:</strong> Yazılım, satın alınan lisans tipine göre cihaz bazlı (HWID) ve tekil kullanıcı adına tahsis edilir. Lisansın birden fazla cihazda eşzamanlı paylaşılması yasaktır.</p><p><strong>2. Fikri Mülkiyet:</strong> Eklenti panelinin kaynak kodları, JSX modülleri, şifre çözme algoritmaları ve tüm grafik arayüz hakları KARABAG\'a aittir. Kodların tersine mühendislik (reverse engineering), ayrıştırma (decompilation) veya benzeri yöntemlerle çözülmesi, kopyalanması, değiştirilmesi ve izinsiz üçüncü şahıslara dağıtılması kesinlikle yasaktır. İhlal durumunda yasal işlem başlatılacaktır.</p><p><strong>3. Garanti Reddi:</strong> Yazılım "olduğu gibi" sunulmaktadır. Hatalı tasarımlar veya matbaa baskı hatalarından kaynaklanabilecek maddi zararlardan Prepress Core veya geliştiricileri sorumlu tutulamaz.</p>'
     },
     en: {
         "nav-features": "Features",
@@ -340,24 +370,24 @@ const translations = {
         "feat4-title": "Automatic & Silent Updates",
         "feat4-desc": "No need to download installer files for updates. The panel automatically checks the API for new versions and silently installs ZXP modules in the background without interrupting your work.",
         "sandbox-title": "Prepress <span class=\"gradient-text\">Simulator Station</span>",
-        "sandbox-subtitle": "See how the system runs behind the scenes. Track how remote actions triggered from the distributor panel reflect on your Illustrator client.",
-        "sandbox-preview-title": "Interactive B2B Presentation Experience",
-        "sandbox-preview-desc": "Experience live B2B scenarios including central admin HWID locking, visual RAM-decrypt animations, automatic silent updates, and targeted license-based module publishing across 6 test modules.",
+        "sandbox-subtitle": "See how the distribution platform works. Track how remote actions triggered from the publisher management dashboard instantly reflect on the client panel.",
+        "sandbox-preview-title": "Interactive Presentation & Distribution Experience",
+        "sandbox-preview-desc": "Experience live scenarios including publisher-side HWID locking, visual RAM-decrypt animations, silent updates, and targeted script publishing (just like developers publishing games on Steam) across interactive modules.",
         "sandbox-feat-1": "HWID Hardware Lock",
         "sandbox-feat-2": "In-Memory RAM Decryption",
         "sandbox-feat-3": "Silent Auto-Update",
         "sandbox-feat-4": "24h Offline Cache",
         "sandbox-btn-launch": "Launch Simulator",
-        "sandbox-admin-tag": "Distributor Server Interface",
+        "sandbox-admin-tag": "Publisher Control Dashboard (Steamworks Model)",
         "sandbox-admin-badge": "SERVER ACTIVE",
-        "sandbox-notice-title": "Distributor & Server Control Hub",
-        "sandbox-control-desc": "The administration interface is private. You can use the controls below to simulate how remote license cancellation or module updates triggered by the distributor instantly process in the client panel.",
+        "sandbox-notice-title": "Publisher & Server Control Dashboard",
+        "sandbox-control-desc": "The developer/publisher control panel is private and not exposed to end-users. You can use the controls below to simulate how actions triggered by the publisher (like pushing updates or locking licenses on Steamworks) instantly process in the client panel.",
         "sandbox-admin-group1": "1. Remote License Control",
-        "sandbox-admin-help1": "Try disabling the license as the distributor to cut client access (Kill-Switch).",
+        "sandbox-admin-help1": "Try disabling the license as the publisher to instantly revoke client access (Kill-Switch).",
         "sandbox-admin-toggle-lbl": "License Active (Kill-Switch)",
         "sandbox-admin-hwid-status": "Matched Hardware: None",
         "sandbox-admin-group2": "2. Script Update Simulation",
-        "sandbox-admin-help2": "Push a new encrypted script update (ZXP) to the client as the distributor.",
+        "sandbox-admin-help2": "Publish a new encrypted script update (ZXP) to the client as the publisher.",
         "sandbox-admin-uploader-title": "Visual Check Module",
         "sandbox-admin-btn-publish": "Send Update from Server",
         "sandbox-admin-group3": "Server & API Logs",
@@ -375,17 +405,17 @@ const translations = {
         "sandbox-client-offline-lbl": "Remaining Offline Time: 24 hours",
         "sandbox-client-log-title": "Studio Terminal Log",
         "arch-title": "How the <span class=\"gradient-text\">System Works</span>",
-        "arch-subtitle": "3-tier infrastructure securing data transfer and license verification between the distributor and matbaa client.",
+        "arch-subtitle": "3-tier infrastructure securing data transfer and license verification between the publisher server and Illustrator client.",
         "arch-tab-security": "AES-256 Encryption",
         "arch-tab-hwid": "HWID Licensing",
         "arch-tab-offline": "Offline Tolerance",
         "arch-sec-title": "Your Codes are Always Safe",
-        "arch-sec-desc": "End-to-end encryption developed to prevent scripts prepared by the distributor from being stolen or unauthorized distribution.",
+        "arch-sec-desc": "End-to-end encryption developed to prevent scripts published by the developers from being stolen or unauthorized distribution.",
         "arch-sec-li1": "<strong>Encrypted Storage on Server:</strong> Developed modules are stored on the server using AES-256-CBC encryption.",
         "arch-sec-li2": "<strong>Secure Transfer:</strong> Files are transferred to the client in encrypted format. Even in man-in-the-middle (MITM) attacks, codes cannot be read.",
         "arch-sec-li3": "<strong>RAM Decryption:</strong> CEP panel does not save the files to disk. Scripts are decrypted directly in memory (RAM) and executed in the Illustrator engine.",
         "arch-sec-chart1": "JSX / ZXP Codes",
-        "arch-sec-chart1-desc": "Distributor Scripts",
+        "arch-sec-chart1-desc": "Publisher Scripts",
         "arch-sec-arrow1": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"currentColor\" stroke=\"none\" style=\"vertical-align:middle; margin-right:4px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg> AES-256 Encryption",
         "arch-sec-chart2": "Encrypted Server Storage",
         "arch-sec-chart2-desc": "Unreadable Code Blocks",
@@ -462,9 +492,12 @@ const translations = {
         "showcase-modal-text": "This action will scan high-resolution visual assets. Do you want to continue?",
         "showcase-modal-cancel": "Cancel",
         "showcase-modal-confirm": "Confirm",
-        "footer-desc": "Distributor-controlled remote script distribution, licensing, and version control infrastructure for Adobe Illustrator.",
+        "footer-desc": "Centralized script distribution, HWID licensing, and version control platform for Adobe Illustrator extension developers.",
         "footer-header-product": "Product",
         "footer-header-contact": "Contact & Support",
+        "contact-web": "Web:",
+        "contact-email": "Email:",
+        "contact-phone": "Phone:",
         "nav-pricing": "Pricing",
         "pricing-title": "License <span class=\"gradient-text\">Plans</span>",
         "pricing-subtitle": "Choose the license period and model that fits your needs and start working right away.",
@@ -494,7 +527,6 @@ const translations = {
         "pricing-feat-corp-users": "Multiple Users under Single License",
         "pricing-feat-corp-limit": "Unlimited / Agreed Device Slots",
         "pricing-feat-corp-admin": "Distributor Control Panel Privileges",
-        "pricing-feat-custom": "Custom Module/Script Requests",
         "pricing-btn-select": "Buy Now (Contact)",
         "pricing-custom-title": "Custom Module & Integration Requests",
         "pricing-custom-desc": "Get a quote for custom JSX/ZXP module development, custom integrations, or tailored device license volumes by contacting us.",
@@ -517,7 +549,33 @@ const translations = {
         "demo-feat-2": "Instantly active after install",
         "demo-feat-3": "No credit card required",
         "demo-cta": "Download & Get Started",
-        "demo-copied": "Copied!"
+        "demo-copied": "Copied!",
+        "contact-title": "Contact & <span class=\"gradient-text\">Support</span>",
+        "contact-info-title": "Quick Contact",
+        "contact-subtitle": "Contact us for your questions, collaboration proposals, or custom script requests.",
+        "contact-label-name": "Name",
+        "contact-label-email": "Email",
+        "contact-label-message": "Message",
+        "contact-placeholder-name": "Your Full Name",
+        "contact-placeholder-email": "example@domain.com",
+        "contact-placeholder-message": "Write your message here...",
+        "contact-btn-send": "Send Message",
+        "nav-contact": "Contact",
+        "footer-header-resources": "Resources",
+        "footer-status-text": "All Systems Operational",
+        "nav-docs": "Docs & Guides",
+        "nav-faq": "FAQ",
+        "nav-release-notes": "Release Notes",
+        "nav-eula": "End-User License Agreement",
+        "docs-modal-close": "Close",
+        "docs-title-docs": "Docs & Guides",
+        "docs-content-docs": '<h5>Installation Steps</h5><p>1. Double-click the downloaded installer file (.exe or .pkg).</p><p>2. Restart Adobe Illustrator.</p><p>3. Go to <strong>Window &gt; Extensions &gt; Prepress Core</strong> to open the panel.</p><br><h5>License Activation</h5><p>Enter your assigned license key into the panel. The system will automatically bind your Hardware ID (HWID) to your license.</p>',
+        "docs-title-faq": "Frequently Asked Questions",
+        "docs-content-faq": '<div class="faq-accordion"><div class="faq-item"><button class="faq-trigger"><span>1. What is a CEP panel / extension and how is it different from normal scripts?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>It is an advanced interface that runs natively inside Adobe Illustrator, just like the &quot;Layers&quot; or &quot;Color&quot; panels. You don\'t have to deal with manually selecting and running external script (.jsx) files; all tools are at your fingertips with visual buttons in a single panel.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>2. I have never used an extension before, how will it help me in prepress operations?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>It flawlessly performs critical tasks that normally take hours—such as manual alignment, adding crop marks, color analysis, visual resolution checks, and bleed margins—in seconds with a single click. It eliminates your risk of making mistakes, preventing waste in printing press production.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>3. What is a Hardware Lock (HWID) and why is it necessary? Will it harm my computer?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>HWID is a secure hardware identifier that ensures your license only runs on your own computer. It absolutely does not harm your computer or collect personal data. Similar to how banking apps bind to your phone, it prevents unauthorized copying or theft of the extension license.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>4. Can I continue to use the extension if my internet connection is lost?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Yes. Our system is designed with a 24-hour offline tolerance, anticipating internet outages in printing studios. Even if your internet is completely disconnected, you can use all features uninterrupted for 24 hours from the last connection using an encrypted local cache.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>5. What happens if I update Adobe Illustrator or switch to a new computer?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Our panel automatically tracks Adobe updates in the background and adapts itself. When switching to a new computer, simply contact us to reset your old computer\'s hardware binding (HWID) from our publisher dashboard and reactivate the extension on your new device. Publishers can instantly reset mappings from their private distributor panel.</p></div></div></div><div class="faq-item"><button class="faq-trigger"><span>6. How is security and code protection provided? Are my designs or files exported?</span><span class="faq-icon">+</span></button><div class="faq-content"><div class="faq-content-inner"><p>Absolutely not. The panel never sends your designs or files to external servers; all operations take place locally on your computer. Only encrypted license verification and script updates are exchanged with the server. Our codes are decrypted and executed directly in RAM, so they cannot be copied or stolen by third parties.</p></div></div></div></div>',
+        "docs-title-release": "Release Notes",
+        "docs-content-release": '<h5>Version v1.0.4 (Current)</h5><p>- Fixed an IPC bridge memory leak inside the CEF container (Chromium Embedded Framework) when rendering intensive SVG paths.</p><p>- Resolved a synchronization race-condition between JSX HostScript engine evaluation and CEP JS async callback threads.</p><p>- Corrected color palette conversion matrix offset for Adobe Illustrator 2026 dark UI mode synchronization.</p><br><h5>Version v1.0.3</h5><p>- Patched AES-256 decrypted buffer allocation on RAM to prevent memory exposure via cold-boot dumps.</p><p>- Optimized local storage database indexing for faster catalog lookups during offline caching verification.</p><p>- Fixed a null-pointer exception in the script loader when the host UI theme changes during JSX execution.</p>',
+        "docs-title-eula": "End-User License Agreement",
+        "docs-content-eula": '<h5>END-USER LICENSE AGREEMENT (EULA)</h5><p>This End-User License Agreement governs the use of the Prepress Core software product. By installing the software, you agree to these terms.</p><p><strong>1. License Grant:</strong> The software is licensed on a per-device (HWID) basis for a single user according to the purchased plan. Sharing the license across multiple machines is strictly prohibited.</p><p><strong>2. Intellectual Property:</strong> All source codes, JSX modules, decryption algorithms, and graphical user interface elements of the panel belong to KARABAG. Any attempt to reverse engineer, decompile, copy, modify, or distribute the software to unauthorized third parties is strictly prohibited. Violations will result in legal action.</p><p><strong>3. Disclaimer of Warranty:</strong> The software is provided "as is". Prepress Core or its developers shall not be liable for any damages or printing losses arising from errors in files or prepress production.</p>'
     }
 };
 
@@ -548,8 +606,8 @@ function applyTranslations() {
     elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (dict[key]) {
-            // Eğer element input placeholder ise placeholder'ı çevir, yoksa innerHTML veya textContent'i çevir
-            if (el.tagName === "INPUT" && el.hasAttribute("placeholder")) {
+            // Eğer element input veya textarea placeholder ise placeholder'ı çevir, yoksa innerHTML veya textContent'i çevir
+            if ((el.tagName === "INPUT" || el.tagName === "TEXTAREA") && el.hasAttribute("placeholder")) {
                 el.setAttribute("placeholder", dict[key]);
             } else {
                 el.innerHTML = dict[key];
@@ -559,15 +617,15 @@ function applyTranslations() {
 
     // Sayfa başlığını güncelleyelim
     document.title = currentLang === "tr"
-        ? "Prepress Core | Adobe Illustrator Otomasyon Platformu"
-        : "Prepress Core | Adobe Illustrator Automation Platform";
+        ? "Prepress Core | Adobe Illustrator Script Dağıtım ve Lisanslama Platformu"
+        : "Prepress Core | Adobe Illustrator Script Distribution & Licensing Platform";
 
     // Meta açıklamayı çevirelim
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.setAttribute("content", currentLang === "tr"
-            ? "Adobe Illustrator için merkezi script yönetimi, HWID lisanslama, 24 saat çevrimdışı toleransı ve sessiz kurulum desteği sunan endüstriyel standartta prepress otomasyon sistemi."
-            : "Industrial standard prepress automation system for Adobe Illustrator offering centralized script management, HWID licensing, 24h offline tolerance, and silent install."
+            ? "Adobe Illustrator script geliştiricileri için merkezi script dağıtımı, HWID lisanslama, sürüm yönetimi ve 24 saat çevrimdışı toleransı sunan bulut tabanlı dağıtım platformu."
+            : "Cloud-based script distribution, HWID licensing, version control, and 24h offline tolerance platform for Adobe Illustrator script developers and studios."
         );
     }
 
@@ -579,6 +637,29 @@ function applyTranslations() {
             : '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. All rights reserved. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.';
     }
 
+    // Eğer dökümantasyon modalı aktifse içeriğini yeni dile göre güncelle
+    const docsModal = document.getElementById("docs-modal");
+    if (docsModal && docsModal.classList.contains("active")) {
+        const activeType = docsModal.getAttribute("data-active-type");
+        if (activeType) {
+            const modalTitle = document.getElementById("docs-modal-title");
+            const modalContent = document.getElementById("docs-modal-content");
+            const btnOk = document.getElementById("btn-docs-ok");
+            
+            const titleKey = `docs-title-${activeType}`;
+            const contentKey = `docs-content-${activeType}`;
+            
+            if (modalTitle) modalTitle.innerHTML = dict[titleKey] || "";
+            if (modalContent) modalContent.innerHTML = dict[contentKey] || "";
+            if (btnOk) {
+                btnOk.textContent = dict["docs-modal-close"] || (currentLang === "en" ? "Close" : "Kapat");
+            }
+            
+            if (activeType === "faq") {
+                initFaqAccordion();
+            }
+        }
+    }
 }
 
 // ==========================================================================
@@ -691,12 +772,14 @@ function initDownloadButtons() {
         btnDlMac.addEventListener("click", (e) => {
             e.preventDefault(); // Doğrudan indirmeyi engelle, önce uyarıyı göster
             macWarningModal.classList.add("active");
+            document.body.classList.add("body-no-scroll");
         });
     }
 
     const closeMacModal = () => {
         if (macWarningModal) {
             macWarningModal.classList.remove("active");
+            document.body.classList.remove("body-no-scroll");
         }
     };
 
@@ -749,5 +832,175 @@ function copyDemoKey() {
             copyBtn.classList.remove("copied");
             spanEl.textContent = originalText;
         }, 2000);
+    });
+}
+
+/* ==========================================================================
+   6. İletişim Formu Kontrolleri
+   ========================================================================== */
+function initContactForm() {
+    const contactForm = document.getElementById("contact-form");
+    if (!contactForm) return;
+
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        const nameInput = document.getElementById("contact-name");
+        const emailInput = document.getElementById("contact-email");
+        const messageInput = document.getElementById("contact-message");
+        const submitBtn = document.getElementById("btn-contact-submit");
+        const submitBtnText = submitBtn.querySelector("span");
+        const statusMsg = document.getElementById("contact-status-msg");
+
+        if (!nameInput.value || !emailInput.value || !messageInput.value) {
+            return;
+        }
+
+        // Butonu disable et ve yükleniyor durumuna getir
+        submitBtn.disabled = true;
+        const originalText = submitBtnText.innerHTML;
+        submitBtnText.innerHTML = currentLang === "tr" ? "Şifreleniyor & Gönderiliyor..." : "Encrypting & Sending...";
+
+        // Web3Forms form verisini hazırla (JSON formatında göndereceğiz)
+        const formData = new FormData(contactForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        statusMsg.style.display = "none";
+        statusMsg.className = "contact-status-msg";
+
+        // Web3Forms API POST
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: json
+        })
+        .then(async (response) => {
+            const jsonRes = await response.json();
+            if (response.status === 200) {
+                statusMsg.style.display = "block";
+                statusMsg.className = "contact-status-msg success";
+                statusMsg.innerHTML = currentLang === "tr" 
+                    ? "<strong>Başarılı!</strong> Mesajınız başarıyla gönderildi. En kısa sürede dönüş yapacağız."
+                    : "<strong>Success!</strong> Your message has been sent successfully. We will get back to you soon.";
+                contactForm.reset();
+            } else {
+                throw new Error(jsonRes.message || "Form submission failed");
+            }
+        })
+        .catch((error) => {
+            console.error("Web3Forms Error:", error);
+            statusMsg.style.display = "block";
+            statusMsg.className = "contact-status-msg error";
+            statusMsg.innerHTML = currentLang === "tr"
+                ? "<strong>Hata!</strong> Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin."
+                : "<strong>Error!</strong> Could not send your message. Please try again later.";
+        })
+        .finally(() => {
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtnText.innerHTML = originalText;
+            }, 800);
+        });
+    });
+}
+
+/* ==========================================================================
+   7. Dökümantasyon Modalı Kontrolleri
+   ========================================================================== */
+function initDocsModal() {
+    const modal = document.getElementById("docs-modal");
+    const modalTitle = document.getElementById("docs-modal-title");
+    const modalContent = document.getElementById("docs-modal-content");
+    const btnClose = document.getElementById("btn-close-docs");
+    const btnOk = document.getElementById("btn-docs-ok");
+
+    if (!modal || !modalTitle || !modalContent) return;
+
+    const links = [
+        { id: "link-docs-guide", type: "docs" },
+        { id: "link-docs-faq", type: "faq" },
+        { id: "link-docs-release", type: "release" },
+        { id: "link-docs-eula", type: "eula" }
+    ];
+
+    links.forEach(item => {
+        const el = document.getElementById(item.id);
+        if (el) {
+            el.addEventListener("click", (e) => {
+                e.preventDefault();
+                
+                const dict = translations[currentLang] || translations["tr"];
+                const titleKey = `docs-title-${item.type}`;
+                const contentKey = `docs-content-${item.type}`;
+
+                modalTitle.innerHTML = dict[titleKey] || "";
+                modalContent.innerHTML = dict[contentKey] || "";
+                
+                // OK butonunun dilini güncelle
+                if (btnOk) {
+                    btnOk.textContent = dict["docs-modal-close"] || (currentLang === "en" ? "Close" : "Kapat");
+                }
+
+                if (item.type === "faq") {
+                    initFaqAccordion();
+                }
+
+                modal.setAttribute("data-active-type", item.type);
+                modal.classList.add("active");
+                document.body.classList.add("body-no-scroll");
+            });
+        }
+    });
+
+    const closeModal = () => {
+        modal.classList.remove("active");
+        modal.removeAttribute("data-active-type");
+        document.body.classList.remove("body-no-scroll");
+    };
+
+    if (btnClose) btnClose.addEventListener("click", closeModal);
+    if (btnOk) btnOk.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+}
+
+/* ==========================================================================
+   7.1. SSS Akordeon İşlevselliği
+   ========================================================================== */
+function initFaqAccordion() {
+    const accordion = document.querySelector(".faq-accordion");
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll(".faq-item");
+    items.forEach(item => {
+        const trigger = item.querySelector(".faq-trigger");
+        const content = item.querySelector(".faq-content");
+
+        if (!trigger || !content) return;
+
+        trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            const isActive = item.classList.contains("active");
+
+            // Close all items
+            items.forEach(otherItem => {
+                otherItem.classList.remove("active");
+                const otherContent = otherItem.querySelector(".faq-content");
+                if (otherContent) {
+                    otherContent.style.maxHeight = null;
+                }
+            });
+
+            // Toggle clicked item
+            if (!isActive) {
+                item.classList.add("active");
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
     });
 }
