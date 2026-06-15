@@ -575,8 +575,8 @@ function applyTranslations() {
     const copyrightText = document.getElementById("copyright-text");
     if (copyrightText) {
         copyrightText.innerHTML = currentLang === "tr"
-            ? '<a href="https://www.efeskarabag.com.tr" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. Tüm hakları saklıdır. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.'
-            : '<a href="https://www.efeskarabag.com.tr" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. All rights reserved. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.';
+            ? '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. Tüm hakları saklıdır. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.'
+            : '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link">KARABAG</a> &copy; 2026 Prepress Core. All rights reserved. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.';
     }
 
 }
