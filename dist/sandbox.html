@@ -2019,6 +2019,39 @@
             border-color: var(--neon-blue);
             box-shadow: 0 0 8px rgba(14, 165, 233, 0.2);
         }
+
+        /* Responsive Desktop Notice Banner */
+        .desktop-notice-banner {
+            display: none;
+            background: rgba(251, 146, 60, 0.08); /* Transparent neon-orange warning */
+            border-bottom: 1px solid rgba(251, 146, 60, 0.15);
+            padding: 10px 1.5rem;
+            color: var(--neon-orange);
+            font-size: 0.85rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .desktop-notice-banner .notice-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .desktop-notice-banner svg {
+            flex-shrink: 0;
+            color: var(--neon-orange);
+        }
+
+        @media (max-width: 1024px) {
+            .desktop-notice-banner {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2072,6 +2105,14 @@
             <button id="lang-switch-btn" class="lang-switch">EN</button>
         </div>
     </header>
+
+    <!-- Mobil/Tablet Deneyim Uyarısı -->
+    <div class="desktop-notice-banner">
+        <div class="notice-content">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span data-i18n="mobile-experience-notice">En iyi deneyim için lütfen masaüstü bir tarayıcı kullanın. İnteraktif simülatör geniş ekranlar için optimize edilmiştir.</span>
+        </div>
+    </div>
 
     <!-- ==========================================================================
        SIMULATOR AREA
@@ -2769,7 +2810,8 @@
                 "tip-scenario-3": "<span>Senaryo 3 Aktif:</span> Sunucu admin arayüzünden yayınlanan v2.5.0 güncellemesi, CEP paneli içinde tasarlanan şık onay modalı ile sessizce uygulanıyor.",
                 "tip-scenario-4": "<span>Senaryo 4 Aktif:</span> İnternet hattı kesiliyor. Boru hattı kararıyor. CEP istemcisi 24 saatlik önbellek sayacıyla kilitlenmeden çalışmaya devam edebiliyor.",
                 "tip-scenario-5": "<span>Senaryo 5 Aktif:</span> Lisans admin tarafından askıya alınıyor veya süresi dolduruluyor. Eklenti saniyesinde kırmızı kilit ekranıyla kapatılıyor.",
-                "tip-scenario-6": "<span>Senaryo 6 Aktif:</span> Özel modül Efes Matbaacılık (PRE-A183-C204) lisansına özel gönderiliyor. Lisans değişince eklentideki modül dinamik olarak güncelleniyor."
+                "tip-scenario-6": "<span>Senaryo 6 Aktif:</span> Özel modül Efes Matbaacılık (PRE-A183-C204) lisansına özel gönderiliyor. Lisans değişince eklentideki modül dinamik olarak güncelleniyor.",
+                "mobile-experience-notice": "En iyi deneyim için lütfen masaüstü bir tarayıcı kullanın. İnteraktif simülatör geniş ekranlar için optimize edilmiştir."
             },
             en: {
                 "header-badge-sim": "SIMULATION LIVE",
@@ -2932,7 +2974,8 @@
                 "tip-scenario-3": "<span>Scenario 3 Active:</span> Pushing v2.5.0 update from admin portal, silently applied using a premium custom dialog on the CEP client.",
                 "tip-scenario-4": "<span>Scenario 4 Active:</span> Connection severed. Pipeline goes dark. CEP client uses 24-hour offline cache to remain fully operational.",
                 "tip-scenario-5": "<span>Scenario 5 Active:</span> Suspending active license from admin panel. CEP client instantly locks down with a red warning screen.",
-                "tip-scenario-6": "<span>Scenario 6 Active:</span> Custom module deployed only for Efes Matbaacılık. Changing license to Karabağ instantly revokes its access."
+                "tip-scenario-6": "<span>Scenario 6 Active:</span> Custom module deployed only for Efes Matbaacılık. Changing license to Karabağ instantly revokes its access.",
+                "mobile-experience-notice": "For the best experience, please use a desktop browser. The interactive simulator is optimized for large screens."
             }
         };
 
