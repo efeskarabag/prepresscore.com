@@ -2729,6 +2729,7 @@
                 "lic-status-inactive": "Pasif",
                 "lic-status-expired": "Süresi Doldu",
                 "btn-edit": "Düzenle",
+                "btn-delete": "Lisansı Sil",
                 "admin-registered-hwids": "Kayıtlı Donanımlar (HWID)",
                 "admin-no-registered-devices": "Kayıtlı cihaz yok",
                 "btn-copy": "Kopyala",
@@ -2891,6 +2892,7 @@
                 "lic-status-inactive": "Inactive",
                 "lic-status-expired": "Expired",
                 "btn-edit": "Edit",
+                "btn-delete": "Delete License",
                 "admin-registered-hwids": "Registered Hardware (HWID)",
                 "admin-no-registered-devices": "No devices registered",
                 "btn-copy": "Copy",
@@ -3268,7 +3270,7 @@
             if (!targetSelect) return;
             
             const currentVal = targetSelect.value;
-            targetSelect.innerHTML = '<option value="global">Tüm Lisanslar (Global)</option>';
+            targetSelect.innerHTML = `<option value="global">${t('admin-target-global')}</option>`;
             
             state.licenses.forEach(lic => {
                 const option = document.createElement('option');
@@ -3372,31 +3374,35 @@
         }
 
         function formatRemainingTime(expireTime, durationMonths) {
-            if (durationMonths === 0) return t("time-unlimited");
+            if (durationMonths === 0) {
+                return `<span style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">${t("time-unlimited")}</span>`;
+            }
             const diff = expireTime - Date.now();
-            if (diff <= 0) return t("time-expired");
+            if (diff <= 0) {
+                return `<span style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; color: var(--neon-red); font-weight: 600;">${t("time-expired")}</span>`;
+            }
             
             const seconds = Math.floor(diff / 1000);
             const minutes = Math.floor(seconds / 60);
             const hours = Math.floor(minutes / 60);
             const days = Math.floor(hours / 24);
             
-            const clockIcon = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:2px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
-            const hourglassIcon = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:2px;"><path d="M6.5 7h11"/><path d="M6.5 17h11"/><path d="M6 20v-2a6 6 0 1 1 12 0v2"/><path d="M6 4v2a6 6 0 1 0 12 0V4"/></svg>';
+            const clockIcon = '<i data-lucide="clock" style="width: 10px; height: 10px; vertical-align: middle; margin-right: 4px;"></i>';
+            const hourglassIcon = '<i data-lucide="hourglass" style="width: 10px; height: 10px; vertical-align: middle; margin-right: 4px;"></i>';
             
             if (days > 30) {
                 const months = Math.floor(days / 30);
                 const remDays = days % 30;
-                return `${clockIcon} ${months} ${t("time-month")} ${remDays} ${t("time-day")}`;
+                return `<span style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">${clockIcon} <span>${months} ${t("time-month")} ${remDays} ${t("time-day")}</span></span>`;
             }
             if (days > 0) {
-                return `${clockIcon} ${days} ${t("time-day")} ${hours % 24} ${t("time-hour")}`;
+                return `<span style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">${clockIcon} <span>${days} ${t("time-day")} ${hours % 24} ${t("time-hour")}</span></span>`;
             }
             
             const printSec = seconds % 60;
             const printMin = minutes % 60;
             const printHr = hours % 24;
-            return `<span style="color: var(--neon-orange); font-weight: 600;">${hourglassIcon} ${printHr}:${printMin < 10 ? '0' + printMin : printMin}:${printSec < 10 ? '0' + printSec : printSec}</span>`;
+            return `<span style="color: var(--neon-orange); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">${hourglassIcon} <span>${printHr}:${printMin < 10 ? '0' + printMin : printMin}:${printSec < 10 ? '0' + printSec : printSec}</span></span>`;
         }
 
         // Keep checking if active license is still OK
@@ -3520,30 +3526,35 @@
                 tbody.innerHTML += `
                     <tr class="license-row" id="lic-row-${idx}">
                         <td>
-                            <div class="code-container">
-                                <span class="license-code">${lic.code}</span>
+                            <div class="code-container" style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                                <span class="license-code" style="white-space: nowrap;">${lic.code}</span>
                                 <button class="btn-copy" onclick="copyLicenseCode('${lic.code}', this)" title="${t('btn-copy') || 'Copy'}">
                                     <i data-lucide="copy" size="12"></i>
                                 </button>
                             </div>
                         </td>
                         <td><strong>${lic.owner}</strong></td>
-                        <td><span id="timer-cell-${idx}">${formatRemainingTime(lic.expireTime, lic.duration)}</span></td>
+                        <td><span id="timer-cell-${idx}" style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">${formatRemainingTime(lic.expireTime, lic.duration)}</span></td>
                         <td>
-                            <span style="font-weight:600;"><i data-lucide="laptop" size="11" style="vertical-align:-1px;"></i> ${lic.registeredHwids.length} / ${lic.deviceLimit}</span>
+                            <span style="font-weight:600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                                <i data-lucide="laptop" size="11" style="vertical-align:-1px;"></i> 
+                                <span>${lic.registeredHwids.length} / ${lic.deviceLimit}</span>
+                            </span>
                         </td>
                         <td>
-                            <span class="${statusClass}" id="status-badge-${idx}">
-                                <i data-lucide="${lic.status === 'active' ? 'check' : 'x'}" size="10"></i> ${statusText}
+                            <span class="${statusClass}" id="status-badge-${idx}" style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                                <i data-lucide="${lic.status === 'active' ? 'check' : 'x'}" size="10"></i> <span>${statusText}</span>
                             </span>
                         </td>
                         <td class="actions-cell">
-                            <button class="btn-action" onclick="toggleEditDrawer(${idx})" title="${t('btn-edit') || 'Edit'}">
-                                <i data-lucide="edit-3" size="10"></i> ${t('btn-edit')}
-                            </button>
-                            <button class="btn-action btn-delete" onclick="triggerDeleteLicense(${idx})" title="Lisansı Sil">
-                                <i data-lucide="trash-2" size="10"></i>
-                            </button>
+                            <div style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                                <button class="btn-action" onclick="toggleEditDrawer(${idx})" title="${t('btn-edit') || 'Edit'}">
+                                    <i data-lucide="edit-3" size="10"></i> <span>${t('btn-edit')}</span>
+                                </button>
+                                <button class="btn-action btn-delete" onclick="triggerDeleteLicense(${idx})" title="${t('btn-delete') || 'Delete License'}">
+                                    <i data-lucide="trash-2" size="10"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                     <tr class="edit-drawer hidden" id="edit-drawer-${idx}">

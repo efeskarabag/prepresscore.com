@@ -23,6 +23,7 @@ function initNavigation() {
         mobileMenuBtn.addEventListener("click", () => {
             mobileMenuBtn.classList.toggle("active");
             mainNavMenu.classList.toggle("active");
+            document.body.classList.toggle("body-no-scroll");
         });
 
         // Menü linklerine tıklandığında menüyü kapat
@@ -30,6 +31,7 @@ function initNavigation() {
             link.addEventListener("click", () => {
                 mobileMenuBtn.classList.remove("active");
                 mainNavMenu.classList.remove("active");
+                document.body.classList.remove("body-no-scroll");
             });
         });
     }
@@ -285,7 +287,17 @@ const translations = {
         "sandbox-admin-dev1": "1 Cihaz (Bireysel)",
         "sandbox-admin-dev3": "3 Cihaz (Çoklu)",
         "sandbox-admin-btn-reset": "HWID Sıfırla",
-        "sandbox-admin-btn-extend": "Süre Uzat"
+        "sandbox-admin-btn-extend": "Süre Uzat",
+        "demo-badge": "Ücretsiz Deneme",
+        "demo-title": "Hemen <span class=\"gradient-text\">Ücretsiz Deneyin</span>",
+        "demo-desc": "Prepress Core'u indirin ve kurun — demo lisans anahtarı otomatik olarak yüklenir. Kredi kartı gerekmez, kurulum anında tamamlanır.",
+        "demo-key-label": "Demo Lisans Anahtarınız",
+        "demo-copy-btn": "Kopyala",
+        "demo-feat-1": "Tüm modüllere erişim",
+        "demo-feat-2": "Kurulum sonrası anında aktif",
+        "demo-feat-3": "Kredi kartı gerekmez",
+        "demo-cta": "İndirin ve Başlayın",
+        "demo-copied": "Kopyalandı!"
     },
     en: {
         "nav-features": "Features",
@@ -495,7 +507,17 @@ const translations = {
         "sandbox-admin-dev1": "1 Device (Individual)",
         "sandbox-admin-dev3": "3 Devices (Multi-device)",
         "sandbox-admin-btn-reset": "Reset HWID",
-        "sandbox-admin-btn-extend": "Extend Term"
+        "sandbox-admin-btn-extend": "Extend Term",
+        "demo-badge": "Free Trial",
+        "demo-title": "Try It <span class=\"gradient-text\">For Free</span>",
+        "demo-desc": "Download and install Prepress Core — the demo license key is pre-loaded automatically. No credit card required, setup is instant.",
+        "demo-key-label": "Your Demo License Key",
+        "demo-copy-btn": "Copy",
+        "demo-feat-1": "Access to all modules",
+        "demo-feat-2": "Instantly active after install",
+        "demo-feat-3": "No credit card required",
+        "demo-cta": "Download & Get Started",
+        "demo-copied": "Copied!"
     }
 };
 
@@ -707,3 +729,25 @@ function initDownloadButtons() {
     }
 }
 
+/* ==========================================================================
+   Demo Key Kopyalama
+   ========================================================================== */
+function copyDemoKey() {
+    const keyText = document.getElementById("demo-key-text");
+    const copyBtn = document.getElementById("demo-copy-btn");
+    if (!keyText || !copyBtn) return;
+    
+    navigator.clipboard.writeText(keyText.textContent).then(() => {
+        copyBtn.classList.add("copied");
+        const spanEl = copyBtn.querySelector("span");
+        const currentLang = localStorage.getItem("preferredLang") || "tr";
+        const copiedText = currentLang === "en" ? "Copied!" : "Kopyalandı!";
+        const originalText = spanEl.textContent;
+        spanEl.textContent = copiedText;
+        
+        setTimeout(() => {
+            copyBtn.classList.remove("copied");
+            spanEl.textContent = originalText;
+        }, 2000);
+    });
+}

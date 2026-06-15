@@ -1526,6 +1526,172 @@ input:checked + .switch.mini .slider:before {
     }
 }
 
+/* ── Demo Trial Banner ── */
+.demo-trial-section {
+    padding: 80px 0 40px;
+    position: relative;
+}
+
+.demo-trial-card {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--color-purple), var(--color-teal), var(--color-purple));
+    background-size: 200% 200%;
+    animation: demo-border-shift 6s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes demo-border-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.demo-trial-glow {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.demo-trial-content {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-secondary);
+    border-radius: 18px;
+    padding: 48px 40px;
+    text-align: center;
+}
+
+.demo-trial-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    color: var(--color-teal);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+}
+
+.demo-trial-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.demo-trial-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 28px;
+}
+
+.demo-key-container {
+    margin-bottom: 24px;
+}
+
+.demo-key-box {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.demo-key-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.demo-key-value-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.demo-key-code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    letter-spacing: 0.05em;
+    user-select: all;
+}
+
+.demo-key-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.demo-key-copy:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.demo-key-copy.copied {
+    background: rgba(14, 165, 233, 0.15);
+    color: var(--color-teal);
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+.demo-trial-features {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.demo-feat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.demo-trial-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 /* 9. İndirmeler Bölümü */
 .download-section {
     padding: 100px 0;
@@ -2171,49 +2337,136 @@ input:checked + .switch.mini .slider:before {
     .hero-title {
         font-size: 2.5rem;
     }
+
+    /* ── Body Scroll Lock ── */
+    body.body-no-scroll {
+        overflow: hidden;
+    }
     
-    /* Mobil Navigasyon Menüsü */
+    /* ── Fullscreen Overlay Mobile Menu ── */
     .mobile-menu-toggle {
         display: flex;
+        z-index: 1001;
+        position: relative;
     }
     
     .main-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
-        padding: 24px;
-        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(7, 9, 15, 0.96);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         opacity: 0;
-        transform: translateY(-10px);
-        transition: var(--transition-smooth);
+        visibility: hidden;
+        transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+                    visibility 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     }
     
     .main-nav.active {
-        display: block;
         opacity: 1;
-        transform: translateY(0);
+        visibility: visible;
     }
     
     .main-nav ul {
         flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 320px;
     }
-    
-    .nav-btn {
+
+    .main-nav ul li {
+        width: 100%;
         text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .main-nav.active ul li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Staggered animation delays */
+    .main-nav.active ul li:nth-child(1) { transition-delay: 0.08s; }
+    .main-nav.active ul li:nth-child(2) { transition-delay: 0.14s; }
+    .main-nav.active ul li:nth-child(3) { transition-delay: 0.20s; }
+    .main-nav.active ul li:nth-child(4) { transition-delay: 0.26s; }
+    .main-nav.active ul li:nth-child(5) { transition-delay: 0.32s; }
+    .main-nav.active ul li:nth-child(6) { transition-delay: 0.38s; }
+
+    /* Reset delays when closing */
+    .main-nav ul li {
+        transition-delay: 0s;
+    }
+
+    .main-nav .nav-link,
+    .main-nav .nav-sandbox-bold {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 14px 0;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        opacity: 0.85;
+        transition: var(--transition-smooth);
+    }
+
+    .main-nav .nav-link:hover,
+    .main-nav .nav-link:focus,
+    .main-nav .nav-sandbox-bold:hover,
+    .main-nav .nav-sandbox-bold:focus {
+        color: var(--color-teal);
+        opacity: 1;
+        transform: scale(1.05);
+        text-shadow: 0 0 10px var(--color-teal-glow);
+    }
+
+    .main-nav .nav-sandbox-bold {
+        color: var(--color-teal);
+    }
+
+    .main-nav .nav-btn {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 14px 40px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--color-purple), var(--color-teal));
+        color: #fff;
+    }
+
+    .main-nav .nav-btn:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+    }
+
+    .main-nav .lang-switch {
+        margin-top: 8px;
+        font-size: 0.9rem;
+        padding: 8px 24px;
+        min-width: 64px;
+        border-bottom: none;
     }
     
-    /* Mobil Hamburger Menü Animasyonu */
+    /* ── Hamburger → X Animation ── */
     .mobile-menu-toggle.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
     
     .mobile-menu-toggle.active span:nth-child(2) {
         opacity: 0;
+        transform: scaleX(0);
     }
     
     .mobile-menu-toggle.active span:nth-child(3) {
