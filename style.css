@@ -253,17 +253,40 @@ input:checked + .switch.mini .slider:before {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10000;
+    padding: 16px 0;
+    transition: var(--transition-smooth);
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgba(9, 9, 11, 0.75);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    padding: 16px 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.main-nav {
+    margin-left: auto;
+    margin-right: 24px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 1001;
 }
 
 .logo {
@@ -1885,22 +1908,25 @@ input:checked + .switch.mini .slider:before {
 
 /* Language Switch Button */
 .lang-switch {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     font-family: var(--font-sans);
     font-size: 0.8rem;
     font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 6px 14px;
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
     transition: var(--transition-smooth);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .lang-switch:hover {
     color: var(--text-primary);
     border-color: var(--color-teal);
-    box-shadow: 0 0 8px var(--color-teal-glow);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px var(--color-teal-glow);
 }
 
 /* Secure Private Panel Notice Styles */
@@ -2344,17 +2370,26 @@ input:checked + .switch.mini .slider:before {
     }
     
     /* ── Fullscreen Overlay Mobile Menu ── */
+    .logo {
+        position: relative;
+        z-index: 10002;
+    }
+
+    .header-actions {
+        position: relative;
+        z-index: 10002;
+    }
+
     .mobile-menu-toggle {
         display: flex;
-        z-index: 1001;
-        position: relative;
     }
     
     .main-nav {
         position: fixed;
         inset: 0;
-        z-index: 1000;
-        background: rgba(7, 9, 15, 0.96);
+        margin: 0;
+        z-index: 10001;
+        background: rgba(9, 9, 11, 0.96);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         display: flex;
@@ -2362,13 +2397,15 @@ input:checked + .switch.mini .slider:before {
         justify-content: center;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),
-                    visibility 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        pointer-events: none;
+        transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .main-nav.active {
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
     }
     
     .main-nav ul {
@@ -2385,7 +2422,8 @@ input:checked + .switch.mini .slider:before {
         text-align: center;
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .main-nav.active ul li {
@@ -2450,18 +2488,17 @@ input:checked + .switch.mini .slider:before {
         transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
     }
-
-    .main-nav .lang-switch {
-        margin-top: 8px;
-        font-size: 0.9rem;
-        padding: 8px 24px;
-        min-width: 64px;
-        border-bottom: none;
-    }
     
     /* ── Hamburger → X Animation ── */
+    .mobile-menu-toggle span {
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.3s ease,
+                    background-color 0.3s ease;
+    }
+
     .mobile-menu-toggle.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
+        background-color: var(--color-teal);
     }
     
     .mobile-menu-toggle.active span:nth-child(2) {
@@ -2471,6 +2508,7 @@ input:checked + .switch.mini .slider:before {
     
     .mobile-menu-toggle.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+        background-color: var(--color-teal);
     }
 }
 
