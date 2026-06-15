@@ -606,12 +606,16 @@ function applyTranslations() {
     elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (dict[key]) {
-            // Eğer element input veya textarea placeholder ise placeholder'ı çevir, yoksa innerHTML veya textContent'i çevir
-            if ((el.tagName === "INPUT" || el.tagName === "TEXTAREA") && el.hasAttribute("placeholder")) {
-                el.setAttribute("placeholder", dict[key]);
-            } else {
-                el.innerHTML = dict[key];
-            }
+            el.innerHTML = dict[key];
+        }
+    });
+
+    // Placeholder çevirileri
+    const placeholderElements = document.querySelectorAll("[data-i18n-placeholder]");
+    placeholderElements.forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) {
+            el.setAttribute("placeholder", dict[key]);
         }
     });
 
