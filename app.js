@@ -244,6 +244,13 @@ const translations = {
         "showcase-modal-text": "Bu işlem yüksek çözünürlüklü görselleri tarayacaktır. Devam etmek istiyor musunuz?",
         "showcase-modal-cancel": "Vazgeç",
         "showcase-modal-confirm": "Onayla",
+        "showcase-mockup-search-placeholder": "Modüllerde ara...",
+        "showcase-mockup-modules-title": "Yüklü Script Modülleri",
+        "showcase-mockup-sys-title": "Sistem Bilgileri",
+        "showcase-mockup-license-ver": "Lisans Sürümü:",
+        "showcase-mockup-auto-update": "Otomatik Güncelleme:",
+        "showcase-mockup-active": "Aktif ✔",
+        "showcase-mockup-edit-title": "Düzenlemek için çift tıklayın",
         "footer-desc": "Adobe Illustrator script ve uzantı geliştiricileri için merkezi script dağıtım, HWID lisanslama ve sürüm yönetim platformu.",
         "footer-header-product": "Ürün",
         "footer-header-contact": "İletişim & Destek",
@@ -492,6 +499,13 @@ const translations = {
         "showcase-modal-text": "This action will scan high-resolution visual assets. Do you want to continue?",
         "showcase-modal-cancel": "Cancel",
         "showcase-modal-confirm": "Confirm",
+        "showcase-mockup-search-placeholder": "Search modules...",
+        "showcase-mockup-modules-title": "Installed Script Modules",
+        "showcase-mockup-sys-title": "System Info",
+        "showcase-mockup-license-ver": "License Version:",
+        "showcase-mockup-auto-update": "Auto Update:",
+        "showcase-mockup-active": "Active ✔",
+        "showcase-mockup-edit-title": "Double-click to edit",
         "footer-desc": "Centralized script distribution, HWID licensing, and version control platform for Adobe Illustrator extension developers.",
         "footer-header-product": "Product",
         "footer-header-contact": "Contact & Support",
@@ -616,6 +630,15 @@ function applyTranslations() {
         const key = el.getAttribute("data-i18n-placeholder");
         if (dict[key]) {
             el.setAttribute("placeholder", dict[key]);
+        }
+    });
+
+    // Başlık (Title) öznitelik çevirileri
+    const titleElements = document.querySelectorAll("[data-i18n-title]");
+    titleElements.forEach(el => {
+        const key = el.getAttribute("data-i18n-title");
+        if (dict[key]) {
+            el.setAttribute("title", dict[key]);
         }
     });
 
