@@ -819,10 +819,10 @@ function initDownloadButtons() {
             closeMacModal();
             
             // Kullanıcı onayladıktan sonra indirmeyi programatik olarak başlat
-            const downloadUrl = "https://github.com/efeskarabag/prepresscore.com/raw/main/public/prepress-core-setup-mac.pkg";
+            const downloadUrl = btnDlMac.getAttribute("href");
             const tempLink = document.createElement("a");
             tempLink.href = downloadUrl;
-            tempLink.setAttribute("download", "prepress-core-setup-mac.pkg");
+            tempLink.setAttribute("download", downloadUrl.substring(downloadUrl.lastIndexOf("/") + 1));
             tempLink.style.display = "none";
             document.body.appendChild(tempLink);
             tempLink.click();
