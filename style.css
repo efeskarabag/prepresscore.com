@@ -1908,15 +1908,31 @@ input:checked + .switch.mini .slider:before {
 }
 
 .copyright-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-smooth);
+    vertical-align: middle;
+}
+
+.copyright-link .copyright-icon {
+    color: var(--color-teal);
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
 }
 
 .copyright-link:hover {
-    color: var(--color-teal);
-    text-decoration: underline;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.copyright-link:hover .copyright-icon {
+    color: #38bdf8;
+    filter: drop-shadow(0 0 6px var(--color-teal-glow));
+    transform: scale(1.15);
 }
 
 .footer-version {
