@@ -1928,12 +1928,14 @@ input:checked + .switch.mini .slider:before {
 }
 
 .copyright-link:hover {
-    color: var(--color-teal);
-    text-decoration: underline;
+    color: var(--text-secondary);
+    text-decoration: none;
 }
 
 .copyright-link:hover .copyright-icon {
-    transform: scale(1.1);
+    color: var(--color-teal);
+    filter: drop-shadow(0 0 6px var(--color-teal-glow));
+    transform: scale(1.15);
 }
 
 .footer-version {
