@@ -660,8 +660,8 @@ function applyTranslations() {
     const copyrightText = document.getElementById("copyright-text");
     if (copyrightText) {
         copyrightText.innerHTML = currentLang === "tr"
-            ? '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link"><svg class="copyright-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>EfesKarabag</a> &copy; 2026 Prepress Core. Tüm hakları saklıdır. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.'
-            : '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link"><svg class="copyright-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>EfesKarabag</a> &copy; 2026 Prepress Core. All rights reserved. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.';
+            ? '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link"><svg class="copyright-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>EfesKarabag</a> &copy; 2026 Prepress Core. Tüm hakları saklıdır. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.'
+            : '<a href="https://www.efeskarabag.com" target="_blank" class="copyright-link"><svg class="copyright-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>EfesKarabag</a> &copy; 2026 Prepress Core. All rights reserved. Adobe, Illustrator and CEP are registered trademarks of Adobe Inc.';
     }
 
     // Eğer dökümantasyon modalı aktifse içeriğini yeni dile göre güncelle
