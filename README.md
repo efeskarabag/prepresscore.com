@@ -1,77 +1,78 @@
-# Prepress Core ⚙️🎨
-
 <div align="center">
-  <p><strong>Industrial Adobe Illustrator Automation Platform & Interactive CEP Simulator</strong></p>
+
+  <h1>Prepress Core</h1>
 
   <p>
-    <a href="https://www.prepresscore.com/"><img src="https://img.shields.io/badge/Production_Platform-prepresscore.com-00DC82?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site" /></a>
-    <a href="https://prepresscore-com.vercel.app/"><img src="https://img.shields.io/badge/Vercel_Mirror-prepresscore--com.vercel.app-38BDF8?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Mirror" /></a>
+    <strong>Industrial Adobe Illustrator Automation Platform & Interactive CEP Simulation</strong><br />
+    <em>Remote AES-256 script distribution, hardware-locked (HWID) licensing & vector prepress CAD engine.</em>
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
-    <img src="https://img.shields.io/badge/Adobe_CEP-FF0000?style=flat-square&logo=adobe&logoColor=white" alt="Adobe CEP" />
-    <img src="https://img.shields.io/badge/ExtendScript_JSX-FF9A00?style=flat-square&logo=adobeillustrator&logoColor=white" alt="ExtendScript" />
-    <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
-    <img src="https://img.shields.io/badge/AES--256_Encryption-0A66C2?style=flat-square&logo=security&logoColor=white" alt="AES-256" />
-    <img src="https://img.shields.io/badge/HWID_Hardware_Lock-grey?style=flat-square&logo=lock&logoColor=white" alt="HWID" />
+    <a href="https://www.prepresscore.com/"><img src="https://img.shields.io/badge/Production-prepresscore.com-0d1117?style=flat-square&logo=vercel&logoColor=white&labelColor=161b22" alt="Production Site" /></a>
+    &nbsp;
+    <a href="https://prepresscore-com.vercel.app/"><img src="https://img.shields.io/badge/Mirror-prepresscore--com.vercel.app-0d1117?style=flat-square&logo=vercel&logoColor=white&labelColor=161b22" alt="Vercel Mirror" /></a>
   </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Adobe_CEP-000000?style=flat-square&logo=adobe&logoColor=FF0000" alt="Adobe CEP" />
+    <img src="https://img.shields.io/badge/ExtendScript_JSX-000000?style=flat-square&logo=adobeillustrator&logoColor=FF9A00" alt="ExtendScript" />
+    <img src="https://img.shields.io/badge/JavaScript_ES6+-000000?style=flat-square&logo=javascript&logoColor=F7DF1E" alt="JavaScript" />
+    <img src="https://img.shields.io/badge/Vite-000000?style=flat-square&logo=vite&logoColor=646CFF" alt="Vite" />
+    <img src="https://img.shields.io/badge/AES--256_Encryption-000000?style=flat-square&logo=lock&logoColor=white" alt="AES-256" />
+    <img src="https://img.shields.io/badge/HWID_Licensing-000000?style=flat-square&logo=auth0&logoColor=white" alt="HWID" />
+  </p>
+
 </div>
 
 ---
 
-## 🌟 Overview
+### Architectural Overview
 
-**Prepress Core** is an enterprise-grade automation infrastructure designed for printing houses, commercial packaging converters, and repro houses. It solves one of the oldest pain points in the print industry: protecting, remotely updating, and distributing custom **Adobe Illustrator (CEP / ExtendScript)** scripts across enterprise workforces without exposing source code or risking unlicensed file distribution.
+**Prepress Core** is an enterprise-grade automation infrastructure designed for printing houses, commercial packaging converters, and repro houses. It solves a fundamental operational hurdle in packaging prepress: protecting, remotely updating, and distributing custom **Adobe Illustrator CC (CEP / ExtendScript)** routines across production workstations without exposing plaintext source code or risking unlicensed file distribution.
 
-This repository powers the official web platform and hosts the **Interactive In-Browser Illustrator CEP Simulation**, allowing users to experience the CEP panel mechanics, dieline generators, and ExtendScript console directly within a modern web canvas.
-
----
-
-## 🔒 Platform Security & Architecture
-
-1. **Hardware-Locked (HWID) Licensing:**
-   - Evaluates machine CPU, motherboard serial, and network MAC signatures to lock automation modules strictly to licensed workstations.
-2. **Centralized Remote Script Distribution:**
-   - ExtendScript routines are never stored in plaintext on local client drives.
-   - Code bundles are served dynamically via an encrypted API tunnel, decoded in volatile Illustrator memory, and executed on the fly.
-3. **AES-256 Code Obfuscation & Encryption:**
-   - Protects proprietary packaging formulas, imposition algorithms, and spot-color rules from unauthorized reverse-engineering.
-4. **Resilient Offline Mode:**
-   - Enables uninterrupted production floor operation through encrypted, short-lived cache tokens when internet connection drops.
+This repository powers the official web platform and delivers an **Interactive In-Browser Illustrator CEP Simulation**, allowing operators and engineers to preview panel mechanics, dieline generators, and ExtendScript console execution directly within a modern web canvas.
 
 ---
 
-## 🎨 Interactive In-Browser Simulator
+### Security & Distribution Pipeline
 
-The web platform features an interactive vector CAD/canvas simulator modeling Adobe Illustrator's real-world environment:
+* **Hardware-Locked (HWID) Licensing:** Cryptographically evaluates CPU signatures, motherboard serials, and NIC identifiers to restrict script execution strictly to verified hardware.
+* **Centralized Remote Delivery:** ExtendScript routines are never written to plaintext local drives. Code bundles are pulled over an encrypted TLS tunnel, decoded in volatile Illustrator runtime memory, and executed on the fly.
+* **AES-256 Code Obfuscation:** Protects proprietary packaging formulas, imposition algorithms, and spot-color rules from unauthorized reverse-engineering.
+* **Encrypted Offline Resilience:** Ensures continuous factory floor operations through short-lived encrypted cache tokens when network connections drop.
+
+---
+
+### Interactive Web Canvas Simulator
+
+The web platform features an interactive vector canvas reproducing Adobe Illustrator's native environment:
 * **Tool Matrix:** Selection (V), Direct Selection (A), Pen (P), Type (T), Rectangle (M), Eyedropper (I).
-* **Live Spot / CutContour Preview:** Realtime dieline detection and dimensional auditing (width, height, bleed margins).
-* **Simulated ExtendScript Console:** Visual feedback for JSX script execution, anchor point analysis, and barcode generation.
+* **Live Spot / CutContour Preview:** Realtime dieline detection, dimensional auditing (width, height, bleed margins), and trim line verification.
+* **Simulated ExtendScript Console:** Visual execution logs modeling JSX script execution, anchor point traversal, and barcode generation.
 
 ---
 
-## 🛠️ Tech Stack
+### Engineering Specifications
 
-* **Web UI & Simulator:** Modern Vanilla ES6+, Vite, Canvas API, CSS Grid
-* **Target Desktop Environment:** Adobe Illustrator CC (CEP 10+ / CommonJS / ExtendScript JSX)
-* **Backend Licensing Stack (Proprietary Engine):** Node.js, Express, Crypto AES-256, SQLite / Supabase
+* **Web UI & Simulator:** Vanilla ES6+, Vite, Canvas API, Responsive CSS Grid
+* **Target Desktop Runtime:** Adobe Illustrator CC (CEP 10+ / CommonJS / ExtendScript JSX)
+* **Backend Licensing Engine:** Node.js, Express, Crypto AES-256, SQLite / Supabase
 
 ---
 
-## 🚀 Running the Web Simulator Locally
+### Local Development
 
 ```bash
 # Clone the repository
 git clone https://github.com/efeskarabag/prepresscore.com.git
 
-# Navigate to directory
+# Navigate to project directory
 cd prepresscore.com
 
 # Install dependencies
 npm install
 
-# Start development server
+# Start Vite development server
 npm run dev
 ```
 
@@ -79,9 +80,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 👨‍💻 Author
-
-**Efes Karabağ**
-* Website: [efeskarabag.com](https://www.efeskarabag.com)
-* LinkedIn: [linkedin.com/in/efeskarabag](https://www.linkedin.com/in/efeskarabag/)
-* GitHub: [@efeskarabag](https://github.com/efeskarabag)
+<div align="center">
+  <sub>Developed by <strong>Efes Karabağ</strong> • Prepress Core Automation Systems</sub>
+</div>
